@@ -13,27 +13,26 @@ Swagger Codegen version: 2.4.9
 require 'date'
 
 module SwaggerClient
-  # design object.
-  class DesignSlim
-    # design id.
-    attr_accessor :id
+  # Elastic search response.
+  class EsSearchResponse
+    # time in milliseconds for Elasticsearch to execute.
+    attr_accessor :took
 
-    # design title.
-    attr_accessor :title
+    attr_accessor :hits
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'title' => :'title'
+        :'took' => :'took',
+        :'hits' => :'hits'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'id' => :'Integer',
-        :'title' => :'String'
+        :'took' => :'Integer',
+        :'hits' => :'EsHits'
       }
     end
 
@@ -45,12 +44,12 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.has_key?(:'took')
+        self.took = attributes[:'took']
       end
 
-      if attributes.has_key?(:'title')
-        self.title = attributes[:'title']
+      if attributes.has_key?(:'hits')
+        self.hits = attributes[:'hits']
       end
     end
 
@@ -72,8 +71,8 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          title == o.title
+          took == o.took &&
+          hits == o.hits
     end
 
     # @see the `==` method
@@ -85,7 +84,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, title].hash
+      [took, hits].hash
     end
 
     # Builds the object from hash

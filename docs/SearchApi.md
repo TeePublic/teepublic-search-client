@@ -21,9 +21,9 @@ require 'swagger_client'
 # setup authorization
 SwaggerClient.configure do |config|
   # Configure API key authorization: api_key
-  config.api_key['X-API-KEY '] = 'YOUR API KEY'
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['X-API-KEY '] = 'Bearer'
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
 end
 
 api_instance = SwaggerClient::SearchApi.new
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

@@ -13,27 +13,32 @@ Swagger Codegen version: 2.4.9
 require 'date'
 
 module SwaggerClient
-  # design object.
-  class DesignSlim
-    # design id.
-    attr_accessor :id
+  # document source fields.
+  class EsHit
+    # document score.
+    attr_accessor :_score
 
-    # design title.
-    attr_accessor :title
+    # document id.
+    attr_accessor :_id
+
+    # source fields.
+    attr_accessor :_source
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'title' => :'title'
+        :'_score' => :'_score',
+        :'_id' => :'_id',
+        :'_source' => :'_source'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'id' => :'Integer',
-        :'title' => :'String'
+        :'_score' => :'Float',
+        :'_id' => :'String',
+        :'_source' => :'Object'
       }
     end
 
@@ -45,12 +50,16 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.has_key?(:'_score')
+        self._score = attributes[:'_score']
       end
 
-      if attributes.has_key?(:'title')
-        self.title = attributes[:'title']
+      if attributes.has_key?(:'_id')
+        self._id = attributes[:'_id']
+      end
+
+      if attributes.has_key?(:'_source')
+        self._source = attributes[:'_source']
       end
     end
 
@@ -72,8 +81,9 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          title == o.title
+          _score == o._score &&
+          _id == o._id &&
+          _source == o._source
     end
 
     # @see the `==` method
@@ -85,7 +95,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, title].hash
+      [_score, _id, _source].hash
     end
 
     # Builds the object from hash

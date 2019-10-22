@@ -14,18 +14,30 @@ require 'date'
 
 module SwaggerClient
   # design object.
-  class DesignSlim
+  class Design
     # design id.
     attr_accessor :id
 
     # design title.
     attr_accessor :title
 
+    # design primary tag.
+    attr_accessor :primary_tag
+
+    # design tag.
+    attr_accessor :tags
+
+    # search explanation on this design.
+    attr_accessor :explain
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'title' => :'title'
+        :'title' => :'title',
+        :'primary_tag' => :'primary_tag',
+        :'tags' => :'tags',
+        :'explain' => :'explain'
       }
     end
 
@@ -33,7 +45,10 @@ module SwaggerClient
     def self.swagger_types
       {
         :'id' => :'Integer',
-        :'title' => :'String'
+        :'title' => :'String',
+        :'primary_tag' => :'String',
+        :'tags' => :'Array<String>',
+        :'explain' => :'Object'
       }
     end
 
@@ -51,6 +66,20 @@ module SwaggerClient
 
       if attributes.has_key?(:'title')
         self.title = attributes[:'title']
+      end
+
+      if attributes.has_key?(:'primary_tag')
+        self.primary_tag = attributes[:'primary_tag']
+      end
+
+      if attributes.has_key?(:'tags')
+        if (value = attributes[:'tags']).is_a?(Array)
+          self.tags = value
+        end
+      end
+
+      if attributes.has_key?(:'explain')
+        self.explain = attributes[:'explain']
       end
     end
 
@@ -73,7 +102,10 @@ module SwaggerClient
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          title == o.title
+          title == o.title &&
+          primary_tag == o.primary_tag &&
+          tags == o.tags &&
+          explain == o.explain
     end
 
     # @see the `==` method
@@ -85,7 +117,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, title].hash
+      [id, title, primary_tag, tags, explain].hash
     end
 
     # Builds the object from hash
