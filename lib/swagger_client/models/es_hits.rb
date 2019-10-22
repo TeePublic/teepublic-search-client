@@ -13,27 +13,32 @@ Swagger Codegen version: 2.4.9
 require 'date'
 
 module SwaggerClient
-  # design object.
-  class DesignSlim
-    # design id.
-    attr_accessor :id
+  # Elastic search hits.
+  class EsHits
+    # total number of documents matching our search criteria.
+    attr_accessor :total
 
-    # design title.
-    attr_accessor :title
+    # max score for search query.
+    attr_accessor :max_score
+
+    # actual array of search results.
+    attr_accessor :hits
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'title' => :'title'
+        :'total' => :'total',
+        :'max_score' => :'max_score',
+        :'hits' => :'hits'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'id' => :'Integer',
-        :'title' => :'String'
+        :'total' => :'Integer',
+        :'max_score' => :'Float',
+        :'hits' => :'Array<EsHit>'
       }
     end
 
@@ -45,12 +50,18 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.has_key?(:'total')
+        self.total = attributes[:'total']
       end
 
-      if attributes.has_key?(:'title')
-        self.title = attributes[:'title']
+      if attributes.has_key?(:'max_score')
+        self.max_score = attributes[:'max_score']
+      end
+
+      if attributes.has_key?(:'hits')
+        if (value = attributes[:'hits']).is_a?(Array)
+          self.hits = value
+        end
       end
     end
 
@@ -72,8 +83,9 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          title == o.title
+          total == o.total &&
+          max_score == o.max_score &&
+          hits == o.hits
     end
 
     # @see the `==` method
@@ -85,7 +97,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, title].hash
+      [total, max_score, hits].hash
     end
 
     # Builds the object from hash
