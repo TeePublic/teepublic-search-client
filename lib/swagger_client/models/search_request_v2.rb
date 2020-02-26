@@ -13,36 +13,79 @@ Swagger Codegen version: 2.4.10
 require 'date'
 
 module SwaggerClient
-  # User search response.
-  class SearchResponse
-    # max score for search query.
-    attr_accessor :max_score
+  # User search request.
+  class SearchRequestV2
+    # Search terms.
+    attr_accessor :search_terms
 
-    # total number of documents matching our search criteria.
-    attr_accessor :total
+    # Sort order
+    attr_accessor :sort
 
+    # Design tags filter.
+    attr_accessor :tags_filter
+
+    # product filter
+    attr_accessor :product_type
+
+    # artist ids.
+    attr_accessor :artist_filter
+
+    # Number of results to return per page.
+    attr_accessor :per_page
+
+    # Page offset to fetch.
+    attr_accessor :page_offset
+
+    # whether to return explanation of search results.
     attr_accessor :explain
 
-    # list of designs.
-    attr_accessor :designs
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'max_score' => :'max_score',
-        :'total' => :'total',
-        :'explain' => :'explain',
-        :'designs' => :'designs'
+        :'search_terms' => :'search_terms',
+        :'sort' => :'sort',
+        :'tags_filter' => :'tags_filter',
+        :'product_type' => :'product_type',
+        :'artist_filter' => :'artist_filter',
+        :'per_page' => :'per_page',
+        :'page_offset' => :'page_offset',
+        :'explain' => :'explain'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'max_score' => :'Float',
-        :'total' => :'Integer',
-        :'explain' => :'Explain',
-        :'designs' => :'Array<DesignSlim>'
+        :'search_terms' => :'String',
+        :'sort' => :'String',
+        :'tags_filter' => :'Array<String>',
+        :'product_type' => :'String',
+        :'artist_filter' => :'Array<Integer>',
+        :'per_page' => :'Integer',
+        :'page_offset' => :'Integer',
+        :'explain' => :'BOOLEAN'
       }
     end
 
@@ -54,22 +97,48 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'max_score')
-        self.max_score = attributes[:'max_score']
+      if attributes.has_key?(:'search_terms')
+        self.search_terms = attributes[:'search_terms']
       end
 
-      if attributes.has_key?(:'total')
-        self.total = attributes[:'total']
+      if attributes.has_key?(:'sort')
+        self.sort = attributes[:'sort']
+      else
+        self.sort = 'relevance'
+      end
+
+      if attributes.has_key?(:'tags_filter')
+        if (value = attributes[:'tags_filter']).is_a?(Array)
+          self.tags_filter = value
+        end
+      end
+
+      if attributes.has_key?(:'product_type')
+        self.product_type = attributes[:'product_type']
+      end
+
+      if attributes.has_key?(:'artist_filter')
+        if (value = attributes[:'artist_filter']).is_a?(Array)
+          self.artist_filter = value
+        end
+      end
+
+      if attributes.has_key?(:'per_page')
+        self.per_page = attributes[:'per_page']
+      else
+        self.per_page = 36
+      end
+
+      if attributes.has_key?(:'page_offset')
+        self.page_offset = attributes[:'page_offset']
+      else
+        self.page_offset = 1
       end
 
       if attributes.has_key?(:'explain')
         self.explain = attributes[:'explain']
-      end
-
-      if attributes.has_key?(:'designs')
-        if (value = attributes[:'designs']).is_a?(Array)
-          self.designs = value
-        end
+      else
+        self.explain = false
       end
     end
 
@@ -83,7 +152,19 @@ module SwaggerClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      sort_validator = EnumAttributeValidator.new('String', ['relevance', 'popular', 'newest'])
+      return false unless sort_validator.valid?(@sort)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sort Object to be assigned
+    def sort=(sort)
+      validator = EnumAttributeValidator.new('String', ['relevance', 'popular', 'newest'])
+      unless validator.valid?(sort)
+        fail ArgumentError, 'invalid value for "sort", must be one of #{validator.allowable_values}.'
+      end
+      @sort = sort
     end
 
     # Checks equality by comparing each attribute.
@@ -91,10 +172,14 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          max_score == o.max_score &&
-          total == o.total &&
-          explain == o.explain &&
-          designs == o.designs
+          search_terms == o.search_terms &&
+          sort == o.sort &&
+          tags_filter == o.tags_filter &&
+          product_type == o.product_type &&
+          artist_filter == o.artist_filter &&
+          per_page == o.per_page &&
+          page_offset == o.page_offset &&
+          explain == o.explain
     end
 
     # @see the `==` method
@@ -106,7 +191,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [max_score, total, explain, designs].hash
+      [search_terms, sort, tags_filter, product_type, artist_filter, per_page, page_offset, explain].hash
     end
 
     # Builds the object from hash
