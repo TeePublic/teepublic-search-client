@@ -17,8 +17,14 @@ require 'swagger_client/version'
 require 'swagger_client/configuration'
 
 # Models
+require 'swagger_client/models/autocomplete_request'
+require 'swagger_client/models/autocomplete_response'
+require 'swagger_client/models/autocomplete_suggestion'
 require 'swagger_client/models/design'
 require 'swagger_client/models/design_slim'
+require 'swagger_client/models/es_autocomplete_suggest'
+require 'swagger_client/models/es_completion_suggest'
+require 'swagger_client/models/es_completion_suggest_option'
 require 'swagger_client/models/es_hit'
 require 'swagger_client/models/es_hits'
 require 'swagger_client/models/es_lookup_response'
@@ -29,6 +35,7 @@ require 'swagger_client/models/search_request_v2'
 require 'swagger_client/models/search_response'
 
 # APIs
+require 'swagger_client/api/autocomplete_api'
 require 'swagger_client/api/lookup_api'
 require 'swagger_client/api/search_api'
 

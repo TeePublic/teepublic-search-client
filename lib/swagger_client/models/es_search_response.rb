@@ -20,11 +20,14 @@ module SwaggerClient
 
     attr_accessor :hits
 
+    attr_accessor :suggest
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'took' => :'took',
-        :'hits' => :'hits'
+        :'hits' => :'hits',
+        :'suggest' => :'suggest'
       }
     end
 
@@ -32,7 +35,8 @@ module SwaggerClient
     def self.swagger_types
       {
         :'took' => :'Integer',
-        :'hits' => :'EsHits'
+        :'hits' => :'EsHits',
+        :'suggest' => :'EsAutocompleteSuggest'
       }
     end
 
@@ -50,6 +54,10 @@ module SwaggerClient
 
       if attributes.has_key?(:'hits')
         self.hits = attributes[:'hits']
+      end
+
+      if attributes.has_key?(:'suggest')
+        self.suggest = attributes[:'suggest']
       end
     end
 
@@ -72,7 +80,8 @@ module SwaggerClient
       return true if self.equal?(o)
       self.class == o.class &&
           took == o.took &&
-          hits == o.hits
+          hits == o.hits &&
+          suggest == o.suggest
     end
 
     # @see the `==` method
@@ -84,7 +93,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [took, hits].hash
+      [took, hits, suggest].hash
     end
 
     # Builds the object from hash

@@ -62,17 +62,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['X-API-KEY'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::LookupApi.new
+api_instance = SwaggerClient::AutocompleteApi.new
 
-design_id = 789 # Integer | id of the design to return
+body = SwaggerClient::AutocompleteRequest.new # AutocompleteRequest | Autocomplete Request
 
 
 begin
-  #Returns a published designs based on id.
-  result = api_instance.get_v1_lookup_by_id(design_id)
+  #Returns a list of suggestions based on search prefix.
+  result = api_instance.post_v1_autocomplete(body)
   p result
 rescue SwaggerClient::ApiError => e
-  puts "Exception when calling LookupApi->get_v1_lookup_by_id: #{e}"
+  puts "Exception when calling AutocompleteApi->post_v1_autocomplete: #{e}"
 end
 
 ```
@@ -83,6 +83,7 @@ All URIs are relative to *https://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*SwaggerClient::AutocompleteApi* | [**post_v1_autocomplete**](docs/AutocompleteApi.md#post_v1_autocomplete) | **POST** /v1/autocomplete | Returns a list of suggestions based on search prefix.
 *SwaggerClient::LookupApi* | [**get_v1_lookup_by_id**](docs/LookupApi.md#get_v1_lookup_by_id) | **GET** /v1/lookup/{design_id} | Returns a published designs based on id.
 *SwaggerClient::SearchApi* | [**post_v1_search**](docs/SearchApi.md#post_v1_search) | **POST** /v1/search | Returns a list of published designs based on search query.
 *SwaggerClient::SearchApi* | [**post_v2_search**](docs/SearchApi.md#post_v2_search) | **POST** /v2/search | Returns a list of published designs based on search query.
@@ -90,8 +91,14 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [SwaggerClient::AutocompleteRequest](docs/AutocompleteRequest.md)
+ - [SwaggerClient::AutocompleteResponse](docs/AutocompleteResponse.md)
+ - [SwaggerClient::AutocompleteSuggestion](docs/AutocompleteSuggestion.md)
  - [SwaggerClient::Design](docs/Design.md)
  - [SwaggerClient::DesignSlim](docs/DesignSlim.md)
+ - [SwaggerClient::EsAutocompleteSuggest](docs/EsAutocompleteSuggest.md)
+ - [SwaggerClient::EsCompletionSuggest](docs/EsCompletionSuggest.md)
+ - [SwaggerClient::EsCompletionSuggestOption](docs/EsCompletionSuggestOption.md)
  - [SwaggerClient::EsHit](docs/EsHit.md)
  - [SwaggerClient::EsHits](docs/EsHits.md)
  - [SwaggerClient::EsLookupResponse](docs/EsLookupResponse.md)
