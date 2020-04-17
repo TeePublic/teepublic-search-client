@@ -5,5 +5,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Integer** | design id. | [optional] 
 **title** | **String** | design title. | [optional] 
+**explanation** | **Object** | es explanation. | [optional] 
 
 
