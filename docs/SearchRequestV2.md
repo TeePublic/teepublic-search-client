@@ -12,5 +12,6 @@ Name | Type | Description | Notes
 **page_offset** | **Integer** | Page offset to fetch. | [optional] [default to 1]
 **explain** | **BOOLEAN** | whether to return explanation of search results. | [optional] [default to false]
 **es_explain** | **BOOLEAN** | whether to return elasticsearch explanation of search results. | [optional] [default to false]
+**relevancy_config_id** | **String** | Relevancy config id. | [optional] 
 
 
