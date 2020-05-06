@@ -127,5 +127,60 @@ module SwaggerClient
       end
       return data, status_code, headers
     end
+
+    # Returns a list of published designs based on search query.
+    # Returns a list of published designs based on search query.
+    # @param body User Search Request
+    # @param [Hash] opts the optional parameters
+    # @return [SearchResponse]
+    def post_v2_dmca_search(body, opts = {})
+      data, _status_code, _headers = post_v2_dmca_search_with_http_info(body, opts)
+      data
+    end
+
+    # Returns a list of published designs based on search query.
+    # Returns a list of published designs based on search query.
+    # @param body User Search Request
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SearchResponse, Fixnum, Hash)>] SearchResponse data, response status code and response headers
+    def post_v2_dmca_search_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SearchApi.dmca_post_v2_search ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling SearchApi.dmca_post_v2_search"
+      end
+      # resource path
+      local_var_path = '/v2/dmca-search'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(body)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SearchResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SearchApi#post_v2_dmca_search\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
   end
 end
