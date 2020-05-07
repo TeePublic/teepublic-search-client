@@ -32,6 +32,7 @@ require 'swagger_client/models/es_search_response'
 require 'swagger_client/models/explain'
 require 'swagger_client/models/search_request'
 require 'swagger_client/models/search_request_v2'
+require 'swagger_client/models/dmca_search_request_v2'
 require 'swagger_client/models/search_response'
 
 # APIs
