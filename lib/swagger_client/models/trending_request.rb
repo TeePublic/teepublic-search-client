@@ -13,30 +13,27 @@ Swagger Codegen version: 2.4.12
 require 'date'
 
 module SwaggerClient
-  # Elastic search response.
-  class EsSearchResponse
-    # time in milliseconds for Elasticsearch to execute.
-    attr_accessor :took
+  # Trending request.
+  class TrendingRequest
+    # Batch id.
+    attr_accessor :batch_id
 
-    attr_accessor :hits
-
-    attr_accessor :suggest
+    # List of trending results.
+    attr_accessor :results
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'took' => :'took',
-        :'hits' => :'hits',
-        :'suggest' => :'suggest'
+        :'batch_id' => :'batch_id',
+        :'results' => :'results'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'took' => :'Integer',
-        :'hits' => :'EsHits',
-        :'suggest' => :'EsAutocompleteSuggest'
+        :'batch_id' => :'String',
+        :'results' => :'Array<TrendingResult>'
       }
     end
 
@@ -48,16 +45,14 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'took')
-        self.took = attributes[:'took']
+      if attributes.has_key?(:'batch_id')
+        self.batch_id = attributes[:'batch_id']
       end
 
-      if attributes.has_key?(:'hits')
-        self.hits = attributes[:'hits']
-      end
-
-      if attributes.has_key?(:'suggest')
-        self.suggest = attributes[:'suggest']
+      if attributes.has_key?(:'results')
+        if (value = attributes[:'results']).is_a?(Array)
+          self.results = value
+        end
       end
     end
 
@@ -79,9 +74,8 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          took == o.took &&
-          hits == o.hits &&
-          suggest == o.suggest
+          batch_id == o.batch_id &&
+          results == o.results
     end
 
     # @see the `==` method
@@ -93,7 +87,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [took, hits, suggest].hash
+      [batch_id, results].hash
     end
 
     # Builds the object from hash
