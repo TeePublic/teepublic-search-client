@@ -13,30 +13,27 @@ Swagger Codegen version: 2.4.12
 require 'date'
 
 module SwaggerClient
-  # Elastic search response.
-  class EsSearchResponse
-    # time in milliseconds for Elasticsearch to execute.
-    attr_accessor :took
+  # Trending result.
+  class TrendingResult
+    # Content of trending result.
+    attr_accessor :result
 
-    attr_accessor :hits
-
-    attr_accessor :suggest
+    # Score of trending result.
+    attr_accessor :score
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'took' => :'took',
-        :'hits' => :'hits',
-        :'suggest' => :'suggest'
+        :'result' => :'result',
+        :'score' => :'score'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'took' => :'Integer',
-        :'hits' => :'EsHits',
-        :'suggest' => :'EsAutocompleteSuggest'
+        :'result' => :'String',
+        :'score' => :'Float'
       }
     end
 
@@ -48,16 +45,12 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'took')
-        self.took = attributes[:'took']
+      if attributes.has_key?(:'result')
+        self.result = attributes[:'result']
       end
 
-      if attributes.has_key?(:'hits')
-        self.hits = attributes[:'hits']
-      end
-
-      if attributes.has_key?(:'suggest')
-        self.suggest = attributes[:'suggest']
+      if attributes.has_key?(:'score')
+        self.score = attributes[:'score']
       end
     end
 
@@ -79,9 +72,8 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          took == o.took &&
-          hits == o.hits &&
-          suggest == o.suggest
+          result == o.result &&
+          score == o.score
     end
 
     # @see the `==` method
@@ -93,7 +85,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [took, hits, suggest].hash
+      [result, score].hash
     end
 
     # Builds the object from hash

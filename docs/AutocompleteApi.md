@@ -32,7 +32,7 @@ api_instance = SwaggerClient::AutocompleteApi.new
 prefix = 'prefix_example' # String | search prefix
 
 opts = { 
-  limit: 15, # Integer | Number of results to return.
+  limit: 6, # Integer | Number of results to return.
   explain: false # BOOLEAN | Whether to return explanation of results.
 }
 
@@ -50,7 +50,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **prefix** | **String**| search prefix | 
- **limit** | **Integer**| Number of results to return. | [optional] [default to 15]
+ **limit** | **Integer**| Number of results to return. | [optional] [default to 6]
  **explain** | **BOOLEAN**| Whether to return explanation of results. | [optional] [default to false]
 
 ### Return type
