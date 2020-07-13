@@ -30,14 +30,11 @@ module SwaggerClient
     # design secondary tags.
     attr_accessor :secondary_tags
 
-    # total lifetime sales
-    attr_accessor :lifetime_sales
+    # sales information
+    attr_accessor :sales
 
-    # total monthly sales
-    attr_accessor :monthly_sales
-
-    # total weekly sales
-    attr_accessor :weekly_sales
+    # is the design FAM approved
+    attr_accessor :fam_approved
 
     # es explanation.
     attr_accessor :explanation
@@ -50,9 +47,8 @@ module SwaggerClient
         :'primary_tag' => :'primary_tag',
         :'primary_related_tags' => :'primary_related_tags',
         :'secondary_tags' => :'secondary_tags',
-        :'lifetime_sales' => :'lifetime_sales',
-        :'monthly_sales' => :'monthly_sales',
-        :'weekly_sales' => :'weekly_sales',
+        :'sales' => :'sales',
+        :'fam_approved' => :'fam_approved',
         :'explanation' => :'explanation'
       }
     end
@@ -65,9 +61,8 @@ module SwaggerClient
         :'primary_tag' => :'String',
         :'primary_related_tags' => :'Array<String>',
         :'secondary_tags' => :'Array<String>',
-        :'lifetime_sales' => :'Integer',
-        :'monthly_sales' => :'Integer',
-        :'weekly_sales' => :'Integer',
+        :'sales' => :'Object',
+        :'fam_approved' => :'BOOLEAN',
         :'explanation' => :'Object'
       }
     end
@@ -104,16 +99,12 @@ module SwaggerClient
         end
       end
 
-      if attributes.has_key?(:'lifetime_sales')
-        self.lifetime_sales = attributes[:'lifetime_sales']
+      if attributes.has_key?(:'sales')
+        self.sales = attributes[:'sales']
       end
 
-      if attributes.has_key?(:'monthly_sales')
-        self.monthly_sales = attributes[:'monthly_sales']
-      end
-
-      if attributes.has_key?(:'weekly_sales')
-        self.weekly_sales = attributes[:'weekly_sales']
+      if attributes.has_key?(:'fam_approved')
+        self.fam_approved = attributes[:'fam_approved']
       end
 
       if attributes.has_key?(:'explanation')
@@ -144,9 +135,8 @@ module SwaggerClient
           primary_tag == o.primary_tag &&
           primary_related_tags == o.primary_related_tags &&
           secondary_tags == o.secondary_tags &&
-          lifetime_sales == o.lifetime_sales &&
-          monthly_sales == o.monthly_sales &&
-          weekly_sales == o.weekly_sales &&
+          sales == o.sales &&
+          fam_approved == o.fam_approved &&
           explanation == o.explanation
     end
 
@@ -159,7 +149,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, title, primary_tag, primary_related_tags, secondary_tags, lifetime_sales, monthly_sales, weekly_sales, explanation].hash
+      [id, title, primary_tag, primary_related_tags, secondary_tags, sales, fam_approved, explanation].hash
     end
 
     # Builds the object from hash
