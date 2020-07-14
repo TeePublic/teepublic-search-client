@@ -13,37 +13,27 @@ Swagger Codegen version: 2.4.12
 require 'date'
 
 module SwaggerClient
-  # document source fields.
-  class EsHit
-    # document score.
-    attr_accessor :_score
+  # Related Result.
+  class RelatedResult
+    # Content of related result.
+    attr_accessor :result
 
-    # document id.
-    attr_accessor :_id
-
-    # source fields.
-    attr_accessor :_source
-
-    # es explanation.
-    attr_accessor :_explanation
+    # Score of related result.
+    attr_accessor :score
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'_score' => :'_score',
-        :'_id' => :'_id',
-        :'_source' => :'_source',
-        :'_explanation' => :'_explanation'
+        :'result' => :'result',
+        :'score' => :'score'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'_score' => :'Float',
-        :'_id' => :'String',
-        :'_source' => :'Object',
-        :'_explanation' => :'Object'
+        :'result' => :'String',
+        :'score' => :'Float'
       }
     end
 
@@ -55,20 +45,12 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'_score')
-        self._score = attributes[:'_score']
+      if attributes.has_key?(:'result')
+        self.result = attributes[:'result']
       end
 
-      if attributes.has_key?(:'_id')
-        self._id = attributes[:'_id']
-      end
-
-      if attributes.has_key?(:'_source')
-        self._source = attributes[:'_source']
-      end
-
-      if attributes.has_key?(:'_explanation')
-        self._explanation = attributes[:'_explanation']
+      if attributes.has_key?(:'score')
+        self.score = attributes[:'score']
       end
     end
 
@@ -90,10 +72,8 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          _score == o._score &&
-          _id == o._id &&
-          _source == o._source &&
-          _explanation == o._explanation
+          result == o.result &&
+          score == o.score
     end
 
     # @see the `==` method
@@ -105,7 +85,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [_score, _id, _source, _explanation].hash
+      [result, score].hash
     end
 
     # Builds the object from hash
