@@ -23,7 +23,7 @@ module SwaggerClient
     # Gets related searches based on given term
     # @param search_term Search term to pull related searches from
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse200]
+    # @return [RelatedResponse]
     def get_v1_related_search(search_term, opts = {})
       data, _status_code, _headers = get_v1_related_search_with_http_info(search_term, opts)
       data
@@ -33,7 +33,7 @@ module SwaggerClient
     # Gets related searches based on given term
     # @param search_term Search term to pull related searches from
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse200, Fixnum, Hash)>] InlineResponse200 data, response status code and response headers
+    # @return [Array<(RelatedResponse, Fixnum, Hash)>] RelatedResponse data, response status code and response headers
     def get_v1_related_search_with_http_info(search_term, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RelatedApi.get_v1_related_search ...'
@@ -66,7 +66,7 @@ module SwaggerClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'InlineResponse200')
+        :return_type => 'RelatedResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: RelatedApi#get_v1_related_search\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
