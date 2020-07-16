@@ -119,6 +119,7 @@ Class | Method | HTTP request | Description
  - [SwaggerClient::EsLookupResponse](docs/EsLookupResponse.md)
  - [SwaggerClient::EsSearchResponse](docs/EsSearchResponse.md)
  - [SwaggerClient::Explain](docs/Explain.md)
+ - [SwaggerClient::InlineResponse200](docs/InlineResponse200.md)
  - [SwaggerClient::RelatedResult](docs/RelatedResult.md)
  - [SwaggerClient::SearchRequest](docs/SearchRequest.md)
  - [SwaggerClient::SearchRequestV2](docs/SearchRequestV2.md)
