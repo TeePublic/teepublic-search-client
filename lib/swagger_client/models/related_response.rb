@@ -13,7 +13,7 @@ Swagger Codegen version: 2.4.12
 require 'date'
 
 module SwaggerClient
-  class InlineResponse200
+  class RelatedResponse
     attr_accessor :results
 
     attr_accessor :impression_id

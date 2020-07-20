@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **get_v1_related_search**
-> InlineResponse200 get_v1_related_search(search_term)
+> RelatedResponse get_v1_related_search(search_term)
 
 Gets related searches based on given term
 
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**RelatedResponse**](RelatedResponse.md)
 
 ### Authorization
 
