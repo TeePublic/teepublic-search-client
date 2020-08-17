@@ -36,6 +36,9 @@ module SwaggerClient
     # is the design FAM approved
     attr_accessor :fam_approved
 
+    # click through rate information
+    attr_accessor :click_through_rate
+
     # es explanation.
     attr_accessor :explanation
 
@@ -49,6 +52,7 @@ module SwaggerClient
         :'secondary_tags' => :'secondary_tags',
         :'sales' => :'sales',
         :'fam_approved' => :'fam_approved',
+        :'click_through_rate' => :'click_through_rate',
         :'explanation' => :'explanation'
       }
     end
@@ -63,6 +67,7 @@ module SwaggerClient
         :'secondary_tags' => :'Array<String>',
         :'sales' => :'Object',
         :'fam_approved' => :'BOOLEAN',
+        :'click_through_rate' => :'Object',
         :'explanation' => :'Object'
       }
     end
@@ -107,6 +112,10 @@ module SwaggerClient
         self.fam_approved = attributes[:'fam_approved']
       end
 
+      if attributes.has_key?(:'click_through_rate')
+        self.click_through_rate = attributes[:'click_through_rate']
+      end
+
       if attributes.has_key?(:'explanation')
         self.explanation = attributes[:'explanation']
       end
@@ -137,6 +146,7 @@ module SwaggerClient
           secondary_tags == o.secondary_tags &&
           sales == o.sales &&
           fam_approved == o.fam_approved &&
+          click_through_rate == o.click_through_rate &&
           explanation == o.explanation
     end
 
@@ -149,7 +159,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, title, primary_tag, primary_related_tags, secondary_tags, sales, fam_approved, explanation].hash
+      [id, title, primary_tag, primary_related_tags, secondary_tags, sales, fam_approved, click_through_rate, explanation].hash
     end
 
     # Builds the object from hash
