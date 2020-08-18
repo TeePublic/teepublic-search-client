@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **secondary_tags** | **Array&lt;String&gt;** | design secondary tags. | [optional] 
 **sales** | **Object** | sales information | [optional] 
 **fam_approved** | **BOOLEAN** | is the design FAM approved | [optional] 
+**click_through_rate** | **Object** | click through rate information | [optional] 
 **explanation** | **Object** | es explanation. | [optional] 
 
 
