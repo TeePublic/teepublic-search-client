@@ -13,37 +13,20 @@ Swagger Codegen version: 2.4.12
 require 'date'
 
 module SwaggerClient
-  # document source fields.
-  class EsLookupResponse
-    # document version.
-    attr_accessor :_version
-
-    # document id.
-    attr_accessor :_id
-
-    # boolean flag of found.
-    attr_accessor :found
-
-    # source fields.
-    attr_accessor :_source
+  class TagsResponse
+    attr_accessor :results
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'_version' => :'_version',
-        :'_id' => :'_id',
-        :'found' => :'found',
-        :'_source' => :'_source'
+        :'results' => :'results'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'_version' => :'Integer',
-        :'_id' => :'String',
-        :'found' => :'BOOLEAN',
-        :'_source' => :'Object'
+        :'results' => :'Array<TagResult>'
       }
     end
 
@@ -55,20 +38,10 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'_version')
-        self._version = attributes[:'_version']
-      end
-
-      if attributes.has_key?(:'_id')
-        self._id = attributes[:'_id']
-      end
-
-      if attributes.has_key?(:'found')
-        self.found = attributes[:'found']
-      end
-
-      if attributes.has_key?(:'_source')
-        self._source = attributes[:'_source']
+      if attributes.has_key?(:'results')
+        if (value = attributes[:'results']).is_a?(Array)
+          self.results = value
+        end
       end
     end
 
@@ -90,10 +63,7 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          _version == o._version &&
-          _id == o._id &&
-          found == o.found &&
-          _source == o._source
+          results == o.results
     end
 
     # @see the `==` method
@@ -105,7 +75,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [_version, _id, found, _source].hash
+      [results].hash
     end
 
     # Builds the object from hash

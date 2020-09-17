@@ -13,41 +13,41 @@ Swagger Codegen version: 2.4.12
 require 'uri'
 
 module SwaggerClient
-  class RelatedApi
+  class TagsApi
     attr_accessor :api_client
 
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Gets related searches based on given term
-    # Gets related searches based on given term
-    # @param search_term Search term to pull related searches from
+    # Gets tags data based on name(s)
+    # Gets tags data based on name(s)
+    # @param tag_names_list comma separated list of tag names
     # @param [Hash] opts the optional parameters
-    # @return [RelatedResponse]
-    def get_v1_related_search(search_term, opts = {})
-      data, _status_code, _headers = get_v1_related_search_with_http_info(search_term, opts)
+    # @return [TagsResponse]
+    def get_v1_tags(tag_names_list, opts = {})
+      data, _status_code, _headers = get_v1_tags_with_http_info(tag_names_list, opts)
       data
     end
 
-    # Gets related searches based on given term
-    # Gets related searches based on given term
-    # @param search_term Search term to pull related searches from
+    # Gets tags data based on name(s)
+    # Gets tags data based on name(s)
+    # @param tag_names_list comma separated list of tag names
     # @param [Hash] opts the optional parameters
-    # @return [Array<(RelatedResponse, Fixnum, Hash)>] RelatedResponse data, response status code and response headers
-    def get_v1_related_search_with_http_info(search_term, opts = {})
+    # @return [Array<(TagsResponse, Fixnum, Hash)>] TagsResponse data, response status code and response headers
+    def get_v1_tags_with_http_info(tag_names_list, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: RelatedApi.get_v1_related_search ...'
+        @api_client.config.logger.debug 'Calling API: TagsApi.get_v1_tags ...'
       end
-      # verify the required parameter 'search_term' is set
-      if @api_client.config.client_side_validation && search_term.nil?
-        fail ArgumentError, "Missing the required parameter 'search_term' when calling RelatedApi.get_v1_related_search"
+      # verify the required parameter 'tag_names_list' is set
+      if @api_client.config.client_side_validation && tag_names_list.nil?
+        fail ArgumentError, "Missing the required parameter 'tag_names_list' when calling TagsApi.get_v1_tags"
       end
       # resource path
-      local_var_path = '/v1/related-search'
+      local_var_path = '/v1/tags'
 
       # query parameters
       query_params = {}
-      query_params[:'search_term'] = search_term
+      query_params[:'tag_names_list'] = tag_names_list
 
       # header parameters
       header_params = {}
@@ -66,9 +66,9 @@ module SwaggerClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'RelatedResponse')
+        :return_type => 'TagsResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: RelatedApi#get_v1_related_search\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: TagsApi#get_v1_tags\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

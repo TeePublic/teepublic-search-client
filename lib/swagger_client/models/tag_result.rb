@@ -13,37 +13,51 @@ Swagger Codegen version: 2.4.12
 require 'date'
 
 module SwaggerClient
-  # document source fields.
-  class EsLookupResponse
-    # document version.
-    attr_accessor :_version
-
-    # document id.
+  class TagResult
+    # id
     attr_accessor :_id
 
-    # boolean flag of found.
-    attr_accessor :found
+    # tag name
+    attr_accessor :name
 
-    # source fields.
-    attr_accessor :_source
+    # taggings count
+    attr_accessor :taggings
+
+    # suggestable
+    attr_accessor :suggestable
+
+    # canonical
+    attr_accessor :canonical
+
+    # relatable
+    attr_accessor :relatable
+
+    # deleted
+    attr_accessor :deleted
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'_version' => :'_version',
         :'_id' => :'_id',
-        :'found' => :'found',
-        :'_source' => :'_source'
+        :'name' => :'name',
+        :'taggings' => :'taggings',
+        :'suggestable' => :'suggestable',
+        :'canonical' => :'canonical',
+        :'relatable' => :'relatable',
+        :'deleted' => :'deleted'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'_version' => :'Integer',
         :'_id' => :'String',
-        :'found' => :'BOOLEAN',
-        :'_source' => :'Object'
+        :'name' => :'String',
+        :'taggings' => :'Integer',
+        :'suggestable' => :'BOOLEAN',
+        :'canonical' => :'BOOLEAN',
+        :'relatable' => :'BOOLEAN',
+        :'deleted' => :'BOOLEAN'
       }
     end
 
@@ -55,20 +69,32 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'_version')
-        self._version = attributes[:'_version']
-      end
-
       if attributes.has_key?(:'_id')
         self._id = attributes[:'_id']
       end
 
-      if attributes.has_key?(:'found')
-        self.found = attributes[:'found']
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.has_key?(:'_source')
-        self._source = attributes[:'_source']
+      if attributes.has_key?(:'taggings')
+        self.taggings = attributes[:'taggings']
+      end
+
+      if attributes.has_key?(:'suggestable')
+        self.suggestable = attributes[:'suggestable']
+      end
+
+      if attributes.has_key?(:'canonical')
+        self.canonical = attributes[:'canonical']
+      end
+
+      if attributes.has_key?(:'relatable')
+        self.relatable = attributes[:'relatable']
+      end
+
+      if attributes.has_key?(:'deleted')
+        self.deleted = attributes[:'deleted']
       end
     end
 
@@ -90,10 +116,13 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          _version == o._version &&
           _id == o._id &&
-          found == o.found &&
-          _source == o._source
+          name == o.name &&
+          taggings == o.taggings &&
+          suggestable == o.suggestable &&
+          canonical == o.canonical &&
+          relatable == o.relatable &&
+          deleted == o.deleted
     end
 
     # @see the `==` method
@@ -105,7 +134,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [_version, _id, found, _source].hash
+      [_id, name, taggings, suggestable, canonical, relatable, deleted].hash
     end
 
     # Builds the object from hash
