@@ -11,5 +11,5 @@ Swagger Codegen version: 2.4.12
 =end
 
 module SwaggerClient
-  VERSION = '1.0.15'
+  VERSION = '1.0.16'
 end
