@@ -33,6 +33,7 @@ api_instance = SwaggerClient::TagApi.new
 tag_list = 'tag_list_example' # String | Tag list to pull from related tags from
 
 opts = { 
+  minimum_taggings: 0, # Integer | minimum number of taggings required for return
   include_deleted: false # BOOLEAN | Only return tags that are not soft deleted
 }
 
@@ -50,6 +51,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tag_list** | **String**| Tag list to pull from related tags from | 
+ **minimum_taggings** | **Integer**| minimum number of taggings required for return | [optional] [default to 0]
  **include_deleted** | **BOOLEAN**| Only return tags that are not soft deleted | [optional] [default to false]
 
 ### Return type
