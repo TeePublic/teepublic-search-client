@@ -20,6 +20,9 @@ module SwaggerClient
     # Is the tag soft deleted
     attr_accessor :deleted
 
+    # weight of the relationship
+    attr_accessor :weight
+
     # Is the tag linkable or not
     attr_accessor :linkable
 
@@ -31,6 +34,7 @@ module SwaggerClient
       {
         :'name' => :'name',
         :'deleted' => :'deleted',
+        :'weight' => :'weight',
         :'linkable' => :'linkable',
         :'taggings' => :'taggings'
       }
@@ -41,6 +45,7 @@ module SwaggerClient
       {
         :'name' => :'String',
         :'deleted' => :'BOOLEAN',
+        :'weight' => :'Float',
         :'linkable' => :'BOOLEAN',
         :'taggings' => :'Integer'
       }
@@ -60,6 +65,10 @@ module SwaggerClient
 
       if attributes.has_key?(:'deleted')
         self.deleted = attributes[:'deleted']
+      end
+
+      if attributes.has_key?(:'weight')
+        self.weight = attributes[:'weight']
       end
 
       if attributes.has_key?(:'linkable')
@@ -91,6 +100,7 @@ module SwaggerClient
       self.class == o.class &&
           name == o.name &&
           deleted == o.deleted &&
+          weight == o.weight &&
           linkable == o.linkable &&
           taggings == o.taggings
     end
@@ -104,7 +114,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, deleted, linkable, taggings].hash
+      [name, deleted, weight, linkable, taggings].hash
     end
 
     # Builds the object from hash
