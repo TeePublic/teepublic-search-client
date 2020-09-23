@@ -10,5 +10,7 @@ Name | Type | Description | Notes
 **canonical** | **BOOLEAN** | canonical | [optional] 
 **relatable** | **BOOLEAN** | relatable | [optional] 
 **deleted** | **BOOLEAN** | deleted | [optional] 
+**child_count** | **Integer** | number of children tags | [optional] 
+**parent_name** | **String** | name of parent tag | [optional] 
 
 
