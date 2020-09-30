@@ -25,6 +25,9 @@ module SwaggerClient
     attr_accessor :tags_filter
 
     # product filter
+    attr_accessor :canvas
+
+    # product filter
     attr_accessor :canvases
 
     # artist ids.
@@ -76,6 +79,7 @@ module SwaggerClient
         :'search_terms' => :'search_terms',
         :'sort' => :'sort',
         :'tags_filter' => :'tags_filter',
+        :'canvas' => :'canvas',
         :'canvases' => :'canvases',
         :'artist_filter' => :'artist_filter',
         :'per_page' => :'per_page',
@@ -93,6 +97,7 @@ module SwaggerClient
         :'search_terms' => :'String',
         :'sort' => :'String',
         :'tags_filter' => :'Array<String>',
+        :'canvas' => :'String',
         :'canvases' => :'Array<String>',
         :'artist_filter' => :'Array<Integer>',
         :'per_page' => :'Integer',
@@ -126,6 +131,10 @@ module SwaggerClient
         if (value = attributes[:'tags_filter']).is_a?(Array)
           self.tags_filter = value
         end
+      end
+
+      if attributes.has_key?(:'canvas')
+        self.canvas = attributes[:'canvas']
       end
 
       if attributes.has_key?(:'canvases')
@@ -206,6 +215,7 @@ module SwaggerClient
           search_terms == o.search_terms &&
           sort == o.sort &&
           tags_filter == o.tags_filter &&
+          canvas == o.canvas &&
           canvases == o.canvases &&
           artist_filter == o.artist_filter &&
           per_page == o.per_page &&
@@ -225,7 +235,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [search_terms, sort, tags_filter, canvases, artist_filter, per_page, page_offset, explain, es_explain, relevancy_config_id, bucket].hash
+      [search_terms, sort, tags_filter, canvas, canvases, artist_filter, per_page, page_offset, explain, es_explain, relevancy_config_id, bucket].hash
     end
 
     # Builds the object from hash
