@@ -21,11 +21,15 @@ module SwaggerClient
     # elastic search query took time in ms
     attr_accessor :took
 
+    # elasticsearch index the results originated from
+    attr_accessor :index
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'es_query' => :'es_query',
-        :'took' => :'took'
+        :'took' => :'took',
+        :'index' => :'index'
       }
     end
 
@@ -33,7 +37,8 @@ module SwaggerClient
     def self.swagger_types
       {
         :'es_query' => :'Object',
-        :'took' => :'Integer'
+        :'took' => :'Integer',
+        :'index' => :'String'
       }
     end
 
@@ -51,6 +56,10 @@ module SwaggerClient
 
       if attributes.has_key?(:'took')
         self.took = attributes[:'took']
+      end
+
+      if attributes.has_key?(:'index')
+        self.index = attributes[:'index']
       end
     end
 
@@ -73,7 +82,8 @@ module SwaggerClient
       return true if self.equal?(o)
       self.class == o.class &&
           es_query == o.es_query &&
-          took == o.took
+          took == o.took &&
+          index == o.index
     end
 
     # @see the `==` method
@@ -85,7 +95,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [es_query, took].hash
+      [es_query, took, index].hash
     end
 
     # Builds the object from hash
