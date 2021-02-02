@@ -26,6 +26,9 @@ module SwaggerClient
     # Is the tag linkable or not
     attr_accessor :linkable
 
+    # teepublic approved design taggings count
+    attr_accessor :linkable_count
+
     # Number of taggings
     attr_accessor :taggings
 
@@ -36,6 +39,7 @@ module SwaggerClient
         :'deleted' => :'deleted',
         :'weight' => :'weight',
         :'linkable' => :'linkable',
+        :'linkable_count' => :'linkable_count',
         :'taggings' => :'taggings'
       }
     end
@@ -47,6 +51,7 @@ module SwaggerClient
         :'deleted' => :'BOOLEAN',
         :'weight' => :'Float',
         :'linkable' => :'BOOLEAN',
+        :'linkable_count' => :'Integer',
         :'taggings' => :'Integer'
       }
     end
@@ -73,6 +78,10 @@ module SwaggerClient
 
       if attributes.has_key?(:'linkable')
         self.linkable = attributes[:'linkable']
+      end
+
+      if attributes.has_key?(:'linkable_count')
+        self.linkable_count = attributes[:'linkable_count']
       end
 
       if attributes.has_key?(:'taggings')
@@ -102,6 +111,7 @@ module SwaggerClient
           deleted == o.deleted &&
           weight == o.weight &&
           linkable == o.linkable &&
+          linkable_count == o.linkable_count &&
           taggings == o.taggings
     end
 
@@ -114,7 +124,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, deleted, weight, linkable, taggings].hash
+      [name, deleted, weight, linkable, linkable_count, taggings].hash
     end
 
     # Builds the object from hash

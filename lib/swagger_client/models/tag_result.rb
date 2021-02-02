@@ -23,6 +23,9 @@ module SwaggerClient
     # taggings count
     attr_accessor :taggings
 
+    # teepublic approved design taggings count
+    attr_accessor :linkable_count
+
     # suggestable
     attr_accessor :suggestable
 
@@ -47,6 +50,7 @@ module SwaggerClient
         :'_id' => :'_id',
         :'name' => :'name',
         :'taggings' => :'taggings',
+        :'linkable_count' => :'linkable_count',
         :'suggestable' => :'suggestable',
         :'canonical' => :'canonical',
         :'relatable' => :'relatable',
@@ -62,6 +66,7 @@ module SwaggerClient
         :'_id' => :'String',
         :'name' => :'String',
         :'taggings' => :'Integer',
+        :'linkable_count' => :'Integer',
         :'suggestable' => :'BOOLEAN',
         :'canonical' => :'BOOLEAN',
         :'relatable' => :'BOOLEAN',
@@ -89,6 +94,10 @@ module SwaggerClient
 
       if attributes.has_key?(:'taggings')
         self.taggings = attributes[:'taggings']
+      end
+
+      if attributes.has_key?(:'linkable_count')
+        self.linkable_count = attributes[:'linkable_count']
       end
 
       if attributes.has_key?(:'suggestable')
@@ -137,6 +146,7 @@ module SwaggerClient
           _id == o._id &&
           name == o.name &&
           taggings == o.taggings &&
+          linkable_count == o.linkable_count &&
           suggestable == o.suggestable &&
           canonical == o.canonical &&
           relatable == o.relatable &&
@@ -154,7 +164,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [_id, name, taggings, suggestable, canonical, relatable, deleted, child_count, parent_name].hash
+      [_id, name, taggings, linkable_count, suggestable, canonical, relatable, deleted, child_count, parent_name].hash
     end
 
     # Builds the object from hash
