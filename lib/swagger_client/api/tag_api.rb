@@ -76,6 +76,7 @@ module SwaggerClient
     # Gets related tags based on given term(s)
     # @param tag_list Tag list to pull from related tags from
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :discoverable_taggings_minimum minimum number of discoverable taggings required for return (default to 0)
     # @option opts [Integer] :minimum_taggings minimum number of taggings required for return (default to 0)
     # @option opts [BOOLEAN] :include_deleted Only return tags that are not soft deleted (default to false)
     # @return [RelatedTagResponse]
@@ -88,6 +89,7 @@ module SwaggerClient
     # Gets related tags based on given term(s)
     # @param tag_list Tag list to pull from related tags from
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :discoverable_taggings_minimum minimum number of discoverable taggings required for return
     # @option opts [Integer] :minimum_taggings minimum number of taggings required for return
     # @option opts [BOOLEAN] :include_deleted Only return tags that are not soft deleted
     # @return [Array<(RelatedTagResponse, Fixnum, Hash)>] RelatedTagResponse data, response status code and response headers
@@ -105,6 +107,7 @@ module SwaggerClient
       # query parameters
       query_params = {}
       query_params[:'tag_list'] = tag_list
+      query_params[:'discoverable_taggings_minimum'] = opts[:'discoverable_taggings_minimum'] if !opts[:'discoverable_taggings_minimum'].nil?
       query_params[:'minimum_taggings'] = opts[:'minimum_taggings'] if !opts[:'minimum_taggings'].nil?
       query_params[:'include_deleted'] = opts[:'include_deleted'] if !opts[:'include_deleted'].nil?
 
