@@ -9,5 +9,6 @@ Name | Type | Description | Notes
 **artist_id** | **Integer** | Artist Id | [optional] 
 **per_page** | **Integer** | Number of results to return per page. | [optional] [default to 36]
 **page_offset** | **Integer** | Page offset to fetch. | [optional] [default to 1]
+**sort** | **String** | Sort order | [optional] [default to &#39;relevance&#39;]
 
 
