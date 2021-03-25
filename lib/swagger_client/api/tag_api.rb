@@ -79,6 +79,7 @@ module SwaggerClient
     # @option opts [Integer] :discoverable_taggings_minimum minimum number of discoverable taggings required for return (default to 0)
     # @option opts [Integer] :minimum_taggings minimum number of taggings required for return (default to 0)
     # @option opts [BOOLEAN] :include_deleted Only return tags that are not soft deleted (default to false)
+    # @option opts [String] :bucket AB test bucket (default to default)
     # @return [RelatedTagResponse]
     def get_v1_related_tags(tag_list, opts = {})
       data, _status_code, _headers = get_v1_related_tags_with_http_info(tag_list, opts)
@@ -92,6 +93,7 @@ module SwaggerClient
     # @option opts [Integer] :discoverable_taggings_minimum minimum number of discoverable taggings required for return
     # @option opts [Integer] :minimum_taggings minimum number of taggings required for return
     # @option opts [BOOLEAN] :include_deleted Only return tags that are not soft deleted
+    # @option opts [String] :bucket AB test bucket
     # @return [Array<(RelatedTagResponse, Fixnum, Hash)>] RelatedTagResponse data, response status code and response headers
     def get_v1_related_tags_with_http_info(tag_list, opts = {})
       if @api_client.config.debugging
@@ -110,6 +112,7 @@ module SwaggerClient
       query_params[:'discoverable_taggings_minimum'] = opts[:'discoverable_taggings_minimum'] if !opts[:'discoverable_taggings_minimum'].nil?
       query_params[:'minimum_taggings'] = opts[:'minimum_taggings'] if !opts[:'minimum_taggings'].nil?
       query_params[:'include_deleted'] = opts[:'include_deleted'] if !opts[:'include_deleted'].nil?
+      query_params[:'bucket'] = opts[:'bucket'] if !opts[:'bucket'].nil?
 
       # header parameters
       header_params = {}
