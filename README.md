@@ -119,7 +119,6 @@ Class | Method | HTTP request | Description
  - [SwaggerClient::EsCompletionSuggestOption](docs/EsCompletionSuggestOption.md)
  - [SwaggerClient::EsHit](docs/EsHit.md)
  - [SwaggerClient::EsHits](docs/EsHits.md)
- - [SwaggerClient::EsLookupResponse](docs/EsLookupResponse.md)
  - [SwaggerClient::EsSearchResponse](docs/EsSearchResponse.md)
  - [SwaggerClient::Explain](docs/Explain.md)
  - [SwaggerClient::RelatedResponse](docs/RelatedResponse.md)
