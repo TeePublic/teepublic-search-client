@@ -89,7 +89,6 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *SwaggerClient::AutocompleteApi* | [**get_v1_autocomplete**](docs/AutocompleteApi.md#get_v1_autocomplete) | **GET** /v1/autocomplete | Returns a list of suggestions based on search prefix.
 *SwaggerClient::AutocompleteApi* | [**post_v1_autocomplete**](docs/AutocompleteApi.md#post_v1_autocomplete) | **POST** /v1/autocomplete | Returns a list of suggestions based on search prefix.
-*SwaggerClient::LookupApi* | [**get_v1_lookup_by_id**](docs/LookupApi.md#get_v1_lookup_by_id) | **GET** /v1/lookup/{design_id} | Returns a published designs based on id.
 *SwaggerClient::RelatedApi* | [**get_v1_related_search**](docs/RelatedApi.md#get_v1_related_search) | **GET** /v1/related-search | Gets related searches based on given term
 *SwaggerClient::RelevancyApi* | [**delete_v1_relevancy_configuration**](docs/RelevancyApi.md#delete_v1_relevancy_configuration) | **DELETE** /v1/relevancy-configurations/{config_id} | Deletes search relevancy configuration.
 *SwaggerClient::RelevancyApi* | [**get_v1_relevancy_configuration**](docs/RelevancyApi.md#get_v1_relevancy_configuration) | **GET** /v1/relevancy-configurations/{config_id} | Gets a search relevancy configuration.
@@ -120,7 +119,6 @@ Class | Method | HTTP request | Description
  - [SwaggerClient::EsCompletionSuggestOption](docs/EsCompletionSuggestOption.md)
  - [SwaggerClient::EsHit](docs/EsHit.md)
  - [SwaggerClient::EsHits](docs/EsHits.md)
- - [SwaggerClient::EsLookupResponse](docs/EsLookupResponse.md)
  - [SwaggerClient::EsSearchResponse](docs/EsSearchResponse.md)
  - [SwaggerClient::Explain](docs/Explain.md)
  - [SwaggerClient::RelatedResponse](docs/RelatedResponse.md)
