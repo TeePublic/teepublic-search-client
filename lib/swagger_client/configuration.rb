@@ -10,7 +10,7 @@ Swagger Codegen version: 2.4.19
 
 =end
 
-require 'uri'
+require 'addressable/uri'
 
 module SwaggerClient
   class Configuration
@@ -175,7 +175,7 @@ module SwaggerClient
 
     def base_url
       url = "#{scheme}://#{[host, base_path].join('/').gsub(/\/+/, '/')}".sub(/\/+\z/, '')
-      URI.encode(url)
+      Addressable::URI.encode(url)
     end
 
     # Gets API key (with prefix if set).
