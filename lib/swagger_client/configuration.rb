@@ -10,7 +10,7 @@ Swagger Codegen version: 2.4.19
 
 =end
 
-require 'addressable/uri'
+require 'uri'
 
 module SwaggerClient
   class Configuration
