@@ -13,36 +13,26 @@ Swagger Codegen version: 2.4.12
 require 'date'
 
 module SwaggerClient
-  # User search response.
-  class SearchResponse
-    # max score for search query.
-    attr_accessor :max_score
+  class TagMappingResponse
+    # child tag
+    attr_accessor :child_tag
 
-    # total number of documents matching our search criteria.
-    attr_accessor :total
-
-    attr_accessor :explain
-
-    # list of designs.
-    attr_accessor :designs
+    # parent tag
+    attr_accessor :parent_tag
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'max_score' => :'max_score',
-        :'total' => :'total',
-        :'explain' => :'explain',
-        :'designs' => :'designs'
+        :'child_tag' => :'child_tag',
+        :'parent_tag' => :'parent_tag'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'max_score' => :'Float',
-        :'total' => :'Integer',
-        :'explain' => :'Explain',
-        :'designs' => :'Array<DesignSlim>'
+        :'child_tag' => :'String',
+        :'parent_tag' => :'String'
       }
     end
 
@@ -54,22 +44,12 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'max_score')
-        self.max_score = attributes[:'max_score']
+      if attributes.has_key?(:'child_tag')
+        self.child_tag = attributes[:'child_tag']
       end
 
-      if attributes.has_key?(:'total')
-        self.total = attributes[:'total']
-      end
-
-      if attributes.has_key?(:'explain')
-        self.explain = attributes[:'explain']
-      end
-
-      if attributes.has_key?(:'designs')
-        if (value = attributes[:'designs']).is_a?(Array)
-          self.designs = value
-        end
+      if attributes.has_key?(:'parent_tag')
+        self.parent_tag = attributes[:'parent_tag']
       end
     end
 
@@ -91,10 +71,8 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          max_score == o.max_score &&
-          total == o.total &&
-          explain == o.explain &&
-          designs == o.designs
+          child_tag == o.child_tag &&
+          parent_tag == o.parent_tag
     end
 
     # @see the `==` method
@@ -106,7 +84,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [max_score, total, explain, designs].hash
+      [child_tag, parent_tag].hash
     end
 
     # Builds the object from hash
