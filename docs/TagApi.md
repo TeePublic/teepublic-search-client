@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_v1_design_tags**](TagApi.md#get_v1_design_tags) | **GET** /v1/design-tags | Gets tags for a design
 [**get_v1_related_tags**](TagApi.md#get_v1_related_tags) | **GET** /v1/related-tags | Gets related tags based on given term(s)
+[**get_v1_tag_parent_child_mapping**](TagApi.md#get_v1_tag_parent_child_mapping) | **GET** /v1/tag-parent-child-mapping | Gets tag mapping for a seed tag or normalized search term
 [**get_v1_tag_suggestions**](TagApi.md#get_v1_tag_suggestions) | **GET** /v1/tag-suggestions | Returns a list of tag suggestions based on search prefix.
 [**get_v1_tags**](TagApi.md#get_v1_tags) | **GET** /v1/tags | Gets tags data based on name(s)
 
@@ -116,6 +117,60 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RelatedTagResponse**](RelatedTagResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **get_v1_tag_parent_child_mapping**
+> TagMappingResponse get_v1_tag_parent_child_mapping(seed_tag)
+
+Gets tag mapping for a seed tag or normalized search term
+
+Gets tag mapping for a seed tag or normalized search term
+
+### Example
+```ruby
+# load the gem
+require 'swagger_client'
+# setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::TagApi.new
+
+seed_tag = 'seed_tag_example' # String | seed tag or normalized search term
+
+
+begin
+  #Gets tag mapping for a seed tag or normalized search term
+  result = api_instance.get_v1_tag_parent_child_mapping(seed_tag)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling TagApi->get_v1_tag_parent_child_mapping: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **seed_tag** | **String**| seed tag or normalized search term | 
+
+### Return type
+
+[**TagMappingResponse**](TagMappingResponse.md)
 
 ### Authorization
 

@@ -99,6 +99,7 @@ Class | Method | HTTP request | Description
 *SwaggerClient::SearchApi* | [**post_v2_search**](docs/SearchApi.md#post_v2_search) | **POST** /v2/search | Returns a list of discoverable designs based on search query.
 *SwaggerClient::TagApi* | [**get_v1_design_tags**](docs/TagApi.md#get_v1_design_tags) | **GET** /v1/design-tags | Gets tags for a design
 *SwaggerClient::TagApi* | [**get_v1_related_tags**](docs/TagApi.md#get_v1_related_tags) | **GET** /v1/related-tags | Gets related tags based on given term(s)
+*SwaggerClient::TagApi* | [**get_v1_tag_parent_child_mapping**](docs/TagApi.md#get_v1_tag_parent_child_mapping) | **GET** /v1/tag-parent-child-mapping | Gets tag mapping for a seed tag or normalized search term
 *SwaggerClient::TagApi* | [**get_v1_tag_suggestions**](docs/TagApi.md#get_v1_tag_suggestions) | **GET** /v1/tag-suggestions | Returns a list of tag suggestions based on search prefix.
 *SwaggerClient::TagApi* | [**get_v1_tags**](docs/TagApi.md#get_v1_tags) | **GET** /v1/tags | Gets tags data based on name(s)
 *SwaggerClient::TrendingApi* | [**get_v1_trending_search**](docs/TrendingApi.md#get_v1_trending_search) | **GET** /v1/trending-search | Gets trending search results.
@@ -129,6 +130,7 @@ Class | Method | HTTP request | Description
  - [SwaggerClient::SearchRequest](docs/SearchRequest.md)
  - [SwaggerClient::SearchRequestV2](docs/SearchRequestV2.md)
  - [SwaggerClient::SearchResponse](docs/SearchResponse.md)
+ - [SwaggerClient::TagMappingResponse](docs/TagMappingResponse.md)
  - [SwaggerClient::TagResult](docs/TagResult.md)
  - [SwaggerClient::TagsResponse](docs/TagsResponse.md)
  - [SwaggerClient::TrendingRequest](docs/TrendingRequest.md)
