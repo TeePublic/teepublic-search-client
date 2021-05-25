@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **name** | **String** | tag name | [optional] 
 **taggings** | **Integer** | taggings count | [optional] 
 **discoverable_taggings** | **Integer** | discoverable design taggings count | [optional] 
+**mature** | **BOOLEAN** | mature | [optional] 
 **suggestable** | **BOOLEAN** | suggestable | [optional] 
 **canonical** | **BOOLEAN** | canonical | [optional] 
 **relatable** | **BOOLEAN** | relatable | [optional] 
