@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **get_v1_related_search**
-> RelatedResponse get_v1_related_search(search_term)
+> RelatedResponse get_v1_related_search(search_term, opts)
 
 Gets related searches based on given term
 
@@ -30,10 +30,13 @@ api_instance = SwaggerClient::RelatedApi.new
 
 search_term = 'search_term_example' # String | Search term to pull related searches from
 
+opts = { 
+  bucket: 'default' # String | AB test bucket
+}
 
 begin
   #Gets related searches based on given term
-  result = api_instance.get_v1_related_search(search_term)
+  result = api_instance.get_v1_related_search(search_term, opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling RelatedApi->get_v1_related_search: #{e}"
@@ -45,6 +48,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **search_term** | **String**| Search term to pull related searches from | 
+ **bucket** | **String**| AB test bucket | [optional] [default to default]
 
 ### Return type
 
