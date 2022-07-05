@@ -14,5 +14,6 @@ Name | Type | Description | Notes
 **deleted** | **BOOLEAN** | deleted | [optional] 
 **child_count** | **Integer** | number of children tags | [optional] 
 **parent_name** | **String** | name of parent tag | [optional] 
+**linkable** | **BOOLEAN** | allowed to be a link | [optional] 
 
 
