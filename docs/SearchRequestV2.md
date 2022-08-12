@@ -15,5 +15,6 @@ Name | Type | Description | Notes
 **relevancy_config_id** | **String** | Relevancy config id. | [optional] 
 **bucket** | **String** | AB test bucket. | [optional] 
 **safe_search** | **BOOLEAN** | whether we include mature designs in search results. | [optional] [default to true]
+**type** | **String** | Type of search to execute | [optional] [default to &#39;site-search&#39;]
 
 
