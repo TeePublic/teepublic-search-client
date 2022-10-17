@@ -13,29 +13,84 @@ Swagger Codegen version: 2.4.19
 require 'date'
 
 module SwaggerClient
-  class DesignTagsResponse
-    # design id
-    attr_accessor :design_id
+  # User search request.
+  class ArtistSearchRequest
+    # Search terms.
+    attr_accessor :artist_query
 
-    attr_accessor :primary_tag
+    # Sort order
+    attr_accessor :sort
 
-    attr_accessor :secondary_tags
+    # product filter
+    attr_accessor :canvases
+
+    # Number of results to return per page.
+    attr_accessor :per_page
+
+    # Page offset to fetch.
+    attr_accessor :page_offset
+
+    # whether to return explanation of search results.
+    attr_accessor :explain
+
+    # whether to return elasticsearch explanation of search results.
+    attr_accessor :es_explain
+
+    # AB test bucket.
+    attr_accessor :bucket
+
+    # whether we include mature designs in search results.
+    attr_accessor :safe_search
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'design_id' => :'design_id',
-        :'primary_tag' => :'primary_tag',
-        :'secondary_tags' => :'secondary_tags'
+        :'artist_query' => :'artist_query',
+        :'sort' => :'sort',
+        :'canvases' => :'canvases',
+        :'per_page' => :'per_page',
+        :'page_offset' => :'page_offset',
+        :'explain' => :'explain',
+        :'es_explain' => :'es_explain',
+        :'bucket' => :'bucket',
+        :'safe_search' => :'safe_search'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'design_id' => :'Integer',
-        :'primary_tag' => :'TagResult',
-        :'secondary_tags' => :'Array<TagResult>'
+        :'artist_query' => :'String',
+        :'sort' => :'String',
+        :'canvases' => :'Array<String>',
+        :'per_page' => :'Integer',
+        :'page_offset' => :'Integer',
+        :'explain' => :'BOOLEAN',
+        :'es_explain' => :'BOOLEAN',
+        :'bucket' => :'String',
+        :'safe_search' => :'BOOLEAN'
       }
     end
 
@@ -47,18 +102,54 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'design_id')
-        self.design_id = attributes[:'design_id']
+      if attributes.has_key?(:'artist_query')
+        self.artist_query = attributes[:'artist_query']
       end
 
-      if attributes.has_key?(:'primary_tag')
-        self.primary_tag = attributes[:'primary_tag']
+      if attributes.has_key?(:'sort')
+        self.sort = attributes[:'sort']
+      else
+        self.sort = 'relevance'
       end
 
-      if attributes.has_key?(:'secondary_tags')
-        if (value = attributes[:'secondary_tags']).is_a?(Array)
-          self.secondary_tags = value
+      if attributes.has_key?(:'canvases')
+        if (value = attributes[:'canvases']).is_a?(Array)
+          self.canvases = value
         end
+      end
+
+      if attributes.has_key?(:'per_page')
+        self.per_page = attributes[:'per_page']
+      else
+        self.per_page = 36
+      end
+
+      if attributes.has_key?(:'page_offset')
+        self.page_offset = attributes[:'page_offset']
+      else
+        self.page_offset = 1
+      end
+
+      if attributes.has_key?(:'explain')
+        self.explain = attributes[:'explain']
+      else
+        self.explain = false
+      end
+
+      if attributes.has_key?(:'es_explain')
+        self.es_explain = attributes[:'es_explain']
+      else
+        self.es_explain = false
+      end
+
+      if attributes.has_key?(:'bucket')
+        self.bucket = attributes[:'bucket']
+      end
+
+      if attributes.has_key?(:'safe_search')
+        self.safe_search = attributes[:'safe_search']
+      else
+        self.safe_search = true
       end
     end
 
@@ -72,7 +163,19 @@ module SwaggerClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      sort_validator = EnumAttributeValidator.new('String', ['relevance', 'popular', 'newest'])
+      return false unless sort_validator.valid?(@sort)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sort Object to be assigned
+    def sort=(sort)
+      validator = EnumAttributeValidator.new('String', ['relevance', 'popular', 'newest'])
+      unless validator.valid?(sort)
+        fail ArgumentError, 'invalid value for "sort", must be one of #{validator.allowable_values}.'
+      end
+      @sort = sort
     end
 
     # Checks equality by comparing each attribute.
@@ -80,9 +183,15 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          design_id == o.design_id &&
-          primary_tag == o.primary_tag &&
-          secondary_tags == o.secondary_tags
+          artist_query == o.artist_query &&
+          sort == o.sort &&
+          canvases == o.canvases &&
+          per_page == o.per_page &&
+          page_offset == o.page_offset &&
+          explain == o.explain &&
+          es_explain == o.es_explain &&
+          bucket == o.bucket &&
+          safe_search == o.safe_search
     end
 
     # @see the `==` method
@@ -94,7 +203,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [design_id, primary_tag, secondary_tags].hash
+      [artist_query, sort, canvases, per_page, page_offset, explain, es_explain, bucket, safe_search].hash
     end
 
     # Builds the object from hash
