@@ -5,6 +5,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Integer** | design id. | [optional] 
 **title** | **String** | design title. | [optional] 
+**artist_slug** | **String** | Unique identifier of the design&#39;s creator. | [optional] 
+**artist_name** | **String** | Name of the store that houses this design. | [optional] 
 **primary_tag** | **String** | design primary tag. | [optional] 
 **primary_related_tags** | **Array&lt;String&gt;** | design primary related tags. | [optional] 
 **secondary_tags** | **Array&lt;String&gt;** | design secondary tags. | [optional] 
