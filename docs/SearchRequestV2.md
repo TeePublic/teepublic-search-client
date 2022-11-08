@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **es_explain** | **BOOLEAN** | whether to return elasticsearch explanation of search results. | [optional] [default to false]
 **relevancy_config_id** | **String** | Relevancy config id. | [optional] 
 **bucket** | **String** | AB test bucket. | [optional] 
+**did_you_mean** | **BOOLEAN** | whether we include did you mean suggestions in search results. | [optional] [default to true]
 **safe_search** | **BOOLEAN** | whether we include mature designs in search results. | [optional] [default to true]
 **type** | **String** | Type of search to execute | [optional] [default to &#39;site-search&#39;]
 
