@@ -5,8 +5,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_id** | **String** | id | [optional] 
 **name** | **String** | tag name | [optional] 
-**taggings** | **Integer** | taggings count | [optional] 
-**discoverable_taggings** | **Integer** | discoverable design taggings count | [optional] 
 **mature** | **BOOLEAN** | mature | [optional] 
 **suggestable** | **BOOLEAN** | suggestable | [optional] 
 **canonical** | **BOOLEAN** | canonical | [optional] 

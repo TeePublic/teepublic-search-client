@@ -20,12 +20,6 @@ module SwaggerClient
     # tag name
     attr_accessor :name
 
-    # taggings count
-    attr_accessor :taggings
-
-    # discoverable design taggings count
-    attr_accessor :discoverable_taggings
-
     # mature
     attr_accessor :mature
 
@@ -55,8 +49,6 @@ module SwaggerClient
       {
         :'_id' => :'_id',
         :'name' => :'name',
-        :'taggings' => :'taggings',
-        :'discoverable_taggings' => :'discoverable_taggings',
         :'mature' => :'mature',
         :'suggestable' => :'suggestable',
         :'canonical' => :'canonical',
@@ -73,8 +65,6 @@ module SwaggerClient
       {
         :'_id' => :'String',
         :'name' => :'String',
-        :'taggings' => :'Integer',
-        :'discoverable_taggings' => :'Integer',
         :'mature' => :'BOOLEAN',
         :'suggestable' => :'BOOLEAN',
         :'canonical' => :'BOOLEAN',
@@ -100,14 +90,6 @@ module SwaggerClient
 
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
-      end
-
-      if attributes.has_key?(:'taggings')
-        self.taggings = attributes[:'taggings']
-      end
-
-      if attributes.has_key?(:'discoverable_taggings')
-        self.discoverable_taggings = attributes[:'discoverable_taggings']
       end
 
       if attributes.has_key?(:'mature')
@@ -163,8 +145,6 @@ module SwaggerClient
       self.class == o.class &&
           _id == o._id &&
           name == o.name &&
-          taggings == o.taggings &&
-          discoverable_taggings == o.discoverable_taggings &&
           mature == o.mature &&
           suggestable == o.suggestable &&
           canonical == o.canonical &&
@@ -184,7 +164,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [_id, name, taggings, discoverable_taggings, mature, suggestable, canonical, relatable, deleted, child_count, parent_name, linkable].hash
+      [_id, name, mature, suggestable, canonical, relatable, deleted, child_count, parent_name, linkable].hash
     end
 
     # Builds the object from hash
