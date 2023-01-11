@@ -88,8 +88,6 @@ api_instance = SwaggerClient::TagApi.new
 tag_list = 'tag_list_example' # String | Tag list to pull from related tags from
 
 opts = { 
-  discoverable_taggings_minimum: 0, # Integer | minimum number of discoverable taggings required for return
-  minimum_taggings: 0, # Integer | minimum number of taggings required for return
   include_deleted: false, # BOOLEAN | Only return tags that are not soft deleted
   bucket: 'default' # String | AB test bucket
 }
@@ -108,8 +106,6 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tag_list** | **String**| Tag list to pull from related tags from | 
- **discoverable_taggings_minimum** | **Integer**| minimum number of discoverable taggings required for return | [optional] [default to 0]
- **minimum_taggings** | **Integer**| minimum number of taggings required for return | [optional] [default to 0]
  **include_deleted** | **BOOLEAN**| Only return tags that are not soft deleted | [optional] [default to false]
  **bucket** | **String**| AB test bucket | [optional] [default to default]
 
