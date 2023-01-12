@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **explain** | [**Explain**](Explain.md) |  | [optional] 
 **dym_suggest** | **String** | did you mean spell suggestion. | [optional] 
 **designs** | [**Array&lt;DesignSlim&gt;**](DesignSlim.md) | list of designs. | [optional] 
+**promoted_filters** | **Array&lt;String&gt;** | A list of query refinements. | [optional] 
 
 
