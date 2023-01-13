@@ -57,7 +57,7 @@ module SwaggerClient
     # Type of search to execute
     attr_accessor :type
 
-    # List of terms used to further refine a query.
+    # List of terms used to further refine the result set.
     attr_accessor :promoted_filters
 
     class EnumAttributeValidator

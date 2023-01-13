@@ -29,8 +29,8 @@ module SwaggerClient
     # list of designs.
     attr_accessor :designs
 
-    # A list of query refinements.
-    attr_accessor :promoted_filters
+    # List of terms that may be used to further refine the result set.
+    attr_accessor :promoted_filters_suggest
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -40,7 +40,7 @@ module SwaggerClient
         :'explain' => :'explain',
         :'dym_suggest' => :'dym_suggest',
         :'designs' => :'designs',
-        :'promoted_filters' => :'promoted_filters'
+        :'promoted_filters_suggest' => :'promoted_filters_suggest'
       }
     end
 
@@ -52,7 +52,7 @@ module SwaggerClient
         :'explain' => :'Explain',
         :'dym_suggest' => :'String',
         :'designs' => :'Array<DesignSlim>',
-        :'promoted_filters' => :'Array<String>'
+        :'promoted_filters_suggest' => :'Array<String>'
       }
     end
 
@@ -86,9 +86,9 @@ module SwaggerClient
         end
       end
 
-      if attributes.has_key?(:'promoted_filters')
-        if (value = attributes[:'promoted_filters']).is_a?(Array)
-          self.promoted_filters = value
+      if attributes.has_key?(:'promoted_filters_suggest')
+        if (value = attributes[:'promoted_filters_suggest']).is_a?(Array)
+          self.promoted_filters_suggest = value
         end
       end
     end
@@ -116,7 +116,7 @@ module SwaggerClient
           explain == o.explain &&
           dym_suggest == o.dym_suggest &&
           designs == o.designs &&
-          promoted_filters == o.promoted_filters
+          promoted_filters_suggest == o.promoted_filters_suggest
     end
 
     # @see the `==` method
@@ -128,7 +128,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [max_score, total, explain, dym_suggest, designs, promoted_filters].hash
+      [max_score, total, explain, dym_suggest, designs, promoted_filters_suggest].hash
     end
 
     # Builds the object from hash

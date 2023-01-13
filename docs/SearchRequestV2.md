@@ -17,6 +17,6 @@ Name | Type | Description | Notes
 **did_you_mean** | **BOOLEAN** | whether we include did you mean suggestions in search results. | [optional] [default to true]
 **safe_search** | **BOOLEAN** | whether we include mature designs in search results. | [optional] [default to true]
 **type** | **String** | Type of search to execute | [optional] [default to &#39;site-search&#39;]
-**promoted_filters** | **Array&lt;String&gt;** | List of terms used to further refine a query. | [optional] 
+**promoted_filters** | **Array&lt;String&gt;** | List of terms used to further refine the result set. | [optional] 
 
 
