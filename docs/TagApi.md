@@ -8,6 +8,8 @@ Method | HTTP request | Description
 [**get_v1_related_tags**](TagApi.md#get_v1_related_tags) | **GET** /v1/related-tags | Gets related tags based on given term(s)
 [**get_v1_tag_suggestions**](TagApi.md#get_v1_tag_suggestions) | **GET** /v1/tag-suggestions | Returns a list of tag suggestions based on search prefix.
 [**get_v1_tags**](TagApi.md#get_v1_tags) | **GET** /v1/tags | Gets tags data based on name(s)
+[**post_v1_design_tags**](TagApi.md#post_v1_design_tags) | **POST** /v1/design-tags | Sets taggings for designs
+[**post_v1_tags**](TagApi.md#post_v1_tags) | **POST** /v1/tags | Sets tags properties
 
 
 # **get_v1_design_tags**
@@ -234,6 +236,114 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **post_v1_design_tags**
+> SetDesignsTagsResponse post_v1_design_tags(body)
+
+Sets taggings for designs
+
+Sets taggings for designs
+
+### Example
+```ruby
+# load the gem
+require 'swagger_client'
+# setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::TagApi.new
+
+body = SwaggerClient::SetDesignsTaggingsRequest.new # SetDesignsTaggingsRequest | request body
+
+
+begin
+  #Sets taggings for designs
+  result = api_instance.post_v1_design_tags(body)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling TagApi->post_v1_design_tags: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**SetDesignsTaggingsRequest**](SetDesignsTaggingsRequest.md)| request body | 
+
+### Return type
+
+[**SetDesignsTagsResponse**](SetDesignsTagsResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **post_v1_tags**
+> SetTagsResponse post_v1_tags(body)
+
+Sets tags properties
+
+Sets tags properties
+
+### Example
+```ruby
+# load the gem
+require 'swagger_client'
+# setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::TagApi.new
+
+body = SwaggerClient::SetTagsRequest.new # SetTagsRequest | request body
+
+
+begin
+  #Sets tags properties
+  result = api_instance.post_v1_tags(body)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling TagApi->post_v1_tags: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**SetTagsRequest**](SetTagsRequest.md)| request body | 
+
+### Return type
+
+[**SetTagsResponse**](SetTagsResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
