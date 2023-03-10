@@ -98,14 +98,6 @@ module SwaggerClient
         invalid_properties.push('invalid value for "discoverable_before", discoverable_before cannot be nil.')
       end
 
-      if @primary.nil?
-        invalid_properties.push('invalid value for "primary", primary cannot be nil.')
-      end
-
-      if @secondary.nil?
-        invalid_properties.push('invalid value for "secondary", secondary cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -115,8 +107,6 @@ module SwaggerClient
       return false if @design_id.nil?
       return false if @discoverable.nil?
       return false if @discoverable_before.nil?
-      return false if @primary.nil?
-      return false if @secondary.nil?
       true
     end
 
