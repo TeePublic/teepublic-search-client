@@ -5,6 +5,7 @@ All URIs are relative to *https://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**post_artist_search**](SearchApi.md#post_artist_search) | **POST** /v1/artist-search | Performs search on active designs by artist
+[**post_v1_category_search**](SearchApi.md#post_v1_category_search) | **POST** /v1/category-search | Endpoint to retrieve discoverable designs associated with a given category.
 [**post_v2_dmca_search**](SearchApi.md#post_v2_dmca_search) | **POST** /v2/dmca-search | Performs search on publishable designs.
 [**post_v2_search**](SearchApi.md#post_v2_search) | **POST** /v2/search | Returns a list of discoverable designs based on search query.
 
@@ -47,6 +48,60 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**ArtistSearchRequest**](ArtistSearchRequest.md)| User Search Request | 
+
+### Return type
+
+[**SearchResponse**](SearchResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **post_v1_category_search**
+> SearchResponse post_v1_category_search(body)
+
+Endpoint to retrieve discoverable designs associated with a given category.
+
+Returns a list of discoverable designs associated with a given category.
+
+### Example
+```ruby
+# load the gem
+require 'swagger_client'
+# setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::SearchApi.new
+
+body = SwaggerClient::CategorySearchRequestV1.new # CategorySearchRequestV1 | Request object for category search.
+
+
+begin
+  #Endpoint to retrieve discoverable designs associated with a given category.
+  result = api_instance.post_v1_category_search(body)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling SearchApi->post_v1_category_search: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CategorySearchRequestV1**](CategorySearchRequestV1.md)| Request object for category search. | 
 
 ### Return type
 

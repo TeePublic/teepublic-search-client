@@ -13,30 +13,63 @@ Swagger Codegen version: 2.4.19
 require 'date'
 
 module SwaggerClient
-  # design object.
-  class Design
-    # design id.
-    attr_accessor :id
+  class CategorySearchRequestV1
+    # list of categories to apply to the search algorithm
+    attr_accessor :categories
 
-    # design title.
-    attr_accessor :title
+    # ranking algorithm to apply
+    attr_accessor :sort
 
-    # design primary tag.
-    attr_accessor :primary_tag
+    # filter for document availability on products
+    attr_accessor :canvas
 
-    # design tag.
-    attr_accessor :tags
+    # number of results to return per page
+    attr_accessor :per_page
 
-    # search explanation on this design.
+    # number of hits to skip
+    attr_accessor :page_offset
+
+    # whether we include mature designs in search results
+    attr_accessor :safe_search
+
+    # AB test bucket
+    attr_accessor :bucket
+
+    # whether to return an Elaticsearch explanation of search results
     attr_accessor :explain
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'title' => :'title',
-        :'primary_tag' => :'primary_tag',
-        :'tags' => :'tags',
+        :'categories' => :'categories',
+        :'sort' => :'sort',
+        :'canvas' => :'canvas',
+        :'per_page' => :'per_page',
+        :'page_offset' => :'page_offset',
+        :'safe_search' => :'safe_search',
+        :'bucket' => :'bucket',
         :'explain' => :'explain'
       }
     end
@@ -44,11 +77,14 @@ module SwaggerClient
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'id' => :'Integer',
-        :'title' => :'String',
-        :'primary_tag' => :'String',
-        :'tags' => :'Array<String>',
-        :'explain' => :'Object'
+        :'categories' => :'Array<String>',
+        :'sort' => :'String',
+        :'canvas' => :'String',
+        :'per_page' => :'Integer',
+        :'page_offset' => :'Integer',
+        :'safe_search' => :'BOOLEAN',
+        :'bucket' => :'String',
+        :'explain' => :'BOOLEAN'
       }
     end
 
@@ -60,26 +96,48 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.has_key?(:'title')
-        self.title = attributes[:'title']
-      end
-
-      if attributes.has_key?(:'primary_tag')
-        self.primary_tag = attributes[:'primary_tag']
-      end
-
-      if attributes.has_key?(:'tags')
-        if (value = attributes[:'tags']).is_a?(Array)
-          self.tags = value
+      if attributes.has_key?(:'categories')
+        if (value = attributes[:'categories']).is_a?(Array)
+          self.categories = value
         end
+      end
+
+      if attributes.has_key?(:'sort')
+        self.sort = attributes[:'sort']
+      else
+        self.sort = 'relevance'
+      end
+
+      if attributes.has_key?(:'canvas')
+        self.canvas = attributes[:'canvas']
+      end
+
+      if attributes.has_key?(:'per_page')
+        self.per_page = attributes[:'per_page']
+      else
+        self.per_page = 36
+      end
+
+      if attributes.has_key?(:'page_offset')
+        self.page_offset = attributes[:'page_offset']
+      else
+        self.page_offset = 1
+      end
+
+      if attributes.has_key?(:'safe_search')
+        self.safe_search = attributes[:'safe_search']
+      else
+        self.safe_search = true
+      end
+
+      if attributes.has_key?(:'bucket')
+        self.bucket = attributes[:'bucket']
       end
 
       if attributes.has_key?(:'explain')
         self.explain = attributes[:'explain']
+      else
+        self.explain = false
       end
     end
 
@@ -93,7 +151,19 @@ module SwaggerClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      sort_validator = EnumAttributeValidator.new('String', ['relevance', 'popular', 'newest'])
+      return false unless sort_validator.valid?(@sort)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sort Object to be assigned
+    def sort=(sort)
+      validator = EnumAttributeValidator.new('String', ['relevance', 'popular', 'newest'])
+      unless validator.valid?(sort)
+        fail ArgumentError, 'invalid value for "sort", must be one of #{validator.allowable_values}.'
+      end
+      @sort = sort
     end
 
     # Checks equality by comparing each attribute.
@@ -101,10 +171,13 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          title == o.title &&
-          primary_tag == o.primary_tag &&
-          tags == o.tags &&
+          categories == o.categories &&
+          sort == o.sort &&
+          canvas == o.canvas &&
+          per_page == o.per_page &&
+          page_offset == o.page_offset &&
+          safe_search == o.safe_search &&
+          bucket == o.bucket &&
           explain == o.explain
     end
 
@@ -117,7 +190,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, title, primary_tag, tags, explain].hash
+      [categories, sort, canvas, per_page, page_offset, safe_search, bucket, explain].hash
     end
 
     # Builds the object from hash
