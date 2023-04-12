@@ -44,6 +44,18 @@ describe 'SearchApi' do
     end
   end
 
+  # unit tests for post_v1_category_search
+  # Endpoint to retrieve discoverable designs associated with a given category.
+  # Returns a list of discoverable designs associated with a given category.
+  # @param body Request object for category search.
+  # @param [Hash] opts the optional parameters
+  # @return [SearchResponse]
+  describe 'post_v1_category_search test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for post_v2_dmca_search
   # Performs search on publishable designs.
   # Performs search on publishable designs that have not had a a DMCA takedown. Supports filtering of teepublic approved/unapproved designs.
