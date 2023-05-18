@@ -32,6 +32,9 @@ module SwaggerClient
     # List of terms that may be used to further refine the result set.
     attr_accessor :promoted_filters_suggest
 
+    # may contain experimental supplemental response information.
+    attr_accessor :x_supplemental
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -40,7 +43,8 @@ module SwaggerClient
         :'explain' => :'explain',
         :'dym_suggest' => :'dym_suggest',
         :'designs' => :'designs',
-        :'promoted_filters_suggest' => :'promoted_filters_suggest'
+        :'promoted_filters_suggest' => :'promoted_filters_suggest',
+        :'x_supplemental' => :'x_supplemental'
       }
     end
 
@@ -52,7 +56,8 @@ module SwaggerClient
         :'explain' => :'Explain',
         :'dym_suggest' => :'String',
         :'designs' => :'Array<DesignSlim>',
-        :'promoted_filters_suggest' => :'Array<String>'
+        :'promoted_filters_suggest' => :'Array<String>',
+        :'x_supplemental' => :'Object'
       }
     end
 
@@ -91,6 +96,10 @@ module SwaggerClient
           self.promoted_filters_suggest = value
         end
       end
+
+      if attributes.has_key?(:'x_supplemental')
+        self.x_supplemental = attributes[:'x_supplemental']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -116,7 +125,8 @@ module SwaggerClient
           explain == o.explain &&
           dym_suggest == o.dym_suggest &&
           designs == o.designs &&
-          promoted_filters_suggest == o.promoted_filters_suggest
+          promoted_filters_suggest == o.promoted_filters_suggest &&
+          x_supplemental == o.x_supplemental
     end
 
     # @see the `==` method
@@ -128,7 +138,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [max_score, total, explain, dym_suggest, designs, promoted_filters_suggest].hash
+      [max_score, total, explain, dym_suggest, designs, promoted_filters_suggest, x_supplemental].hash
     end
 
     # Builds the object from hash
