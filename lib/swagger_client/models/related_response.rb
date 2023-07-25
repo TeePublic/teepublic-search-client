@@ -18,11 +18,15 @@ module SwaggerClient
 
     attr_accessor :impression_id
 
+    # Flag to indicate if suggesstions are overrides
+    attr_accessor :is_override
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'results' => :'results',
-        :'impression_id' => :'impression_id'
+        :'impression_id' => :'impression_id',
+        :'is_override' => :'is_override'
       }
     end
 
@@ -30,7 +34,8 @@ module SwaggerClient
     def self.swagger_types
       {
         :'results' => :'Array<RelatedResult>',
-        :'impression_id' => :'String'
+        :'impression_id' => :'String',
+        :'is_override' => :'BOOLEAN'
       }
     end
 
@@ -50,6 +55,10 @@ module SwaggerClient
 
       if attributes.has_key?(:'impression_id')
         self.impression_id = attributes[:'impression_id']
+      end
+
+      if attributes.has_key?(:'is_override')
+        self.is_override = attributes[:'is_override']
       end
     end
 
@@ -72,7 +81,8 @@ module SwaggerClient
       return true if self.equal?(o)
       self.class == o.class &&
           results == o.results &&
-          impression_id == o.impression_id
+          impression_id == o.impression_id &&
+          is_override == o.is_override
     end
 
     # @see the `==` method
@@ -84,7 +94,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [results, impression_id].hash
+      [results, impression_id, is_override].hash
     end
 
     # Builds the object from hash

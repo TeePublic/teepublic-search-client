@@ -24,16 +24,12 @@ module SwaggerClient
     # Flag to indicate if suggesstion is linkable to tag page
     attr_accessor :linkable_to_tag_page
 
-    # Flag to indicate if suggesstion is an override
-    attr_accessor :is_override
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'result' => :'result',
         :'score' => :'score',
-        :'linkable_to_tag_page' => :'linkable_to_tag_page',
-        :'is_override' => :'is_override'
+        :'linkable_to_tag_page' => :'linkable_to_tag_page'
       }
     end
 
@@ -42,8 +38,7 @@ module SwaggerClient
       {
         :'result' => :'String',
         :'score' => :'Float',
-        :'linkable_to_tag_page' => :'BOOLEAN',
-        :'is_override' => :'BOOLEAN'
+        :'linkable_to_tag_page' => :'BOOLEAN'
       }
     end
 
@@ -65,10 +60,6 @@ module SwaggerClient
 
       if attributes.has_key?(:'linkable_to_tag_page')
         self.linkable_to_tag_page = attributes[:'linkable_to_tag_page']
-      end
-
-      if attributes.has_key?(:'is_override')
-        self.is_override = attributes[:'is_override']
       end
     end
 
@@ -92,8 +83,7 @@ module SwaggerClient
       self.class == o.class &&
           result == o.result &&
           score == o.score &&
-          linkable_to_tag_page == o.linkable_to_tag_page &&
-          is_override == o.is_override
+          linkable_to_tag_page == o.linkable_to_tag_page
     end
 
     # @see the `==` method
@@ -105,7 +95,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [result, score, linkable_to_tag_page, is_override].hash
+      [result, score, linkable_to_tag_page].hash
     end
 
     # Builds the object from hash
