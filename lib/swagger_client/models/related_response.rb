@@ -18,7 +18,7 @@ module SwaggerClient
 
     attr_accessor :impression_id
 
-    # Flag to indicate if suggesstions are overrides
+    # Flag to indicate if suggestions are overrides
     attr_accessor :is_override
 
     # Attribute mapping from ruby-style variable name to JSON key.
