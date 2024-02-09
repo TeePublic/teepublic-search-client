@@ -13,26 +13,53 @@ Swagger Codegen version: 2.4.19
 require 'date'
 
 module SwaggerClient
-  class RelatedTagObject
-    # Tag name of the originating tag
-    attr_accessor :name
+  class LinkGraphResponse
+    # Whether a tag is canonical or duplicate
+    attr_accessor :status
 
-    # List of related tag results
-    attr_accessor :related_tags
+    # If the tag is a duplicate, the canonical parent tag
+    attr_accessor :canonical_parent
+
+    # Whether the tag status was manually edited
+    attr_accessor :override
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'related_tags' => :'related_tags'
+        :'status' => :'status',
+        :'canonical_parent' => :'canonical_parent',
+        :'override' => :'override'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'name' => :'String',
-        :'related_tags' => :'Array<RelatedTagResult>'
+        :'status' => :'String',
+        :'canonical_parent' => :'String',
+        :'override' => :'BOOLEAN'
       }
     end
 
@@ -44,14 +71,16 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.has_key?(:'status')
+        self.status = attributes[:'status']
       end
 
-      if attributes.has_key?(:'related_tags')
-        if (value = attributes[:'related_tags']).is_a?(Array)
-          self.related_tags = value
-        end
+      if attributes.has_key?(:'canonical_parent')
+        self.canonical_parent = attributes[:'canonical_parent']
+      end
+
+      if attributes.has_key?(:'override')
+        self.override = attributes[:'override']
       end
     end
 
@@ -65,7 +94,19 @@ module SwaggerClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      status_validator = EnumAttributeValidator.new('String', ['canonical', 'duplicate'])
+      return false unless status_validator.valid?(@status)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] status Object to be assigned
+    def status=(status)
+      validator = EnumAttributeValidator.new('String', ['canonical', 'duplicate'])
+      unless validator.valid?(status)
+        fail ArgumentError, 'invalid value for "status", must be one of #{validator.allowable_values}.'
+      end
+      @status = status
     end
 
     # Checks equality by comparing each attribute.
@@ -73,8 +114,9 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          related_tags == o.related_tags
+          status == o.status &&
+          canonical_parent == o.canonical_parent &&
+          override == o.override
     end
 
     # @see the `==` method
@@ -86,7 +128,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, related_tags].hash
+      [status, canonical_parent, override].hash
     end
 
     # Builds the object from hash

@@ -13,26 +13,26 @@ Swagger Codegen version: 2.4.19
 require 'date'
 
 module SwaggerClient
-  class RelatedTagObject
-    # Tag name of the originating tag
-    attr_accessor :name
+  class SetLinkGraphResponse
+    # Overall operation success
+    attr_accessor :success
 
-    # List of related tag results
-    attr_accessor :related_tags
+    # Operation message
+    attr_accessor :message
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'related_tags' => :'related_tags'
+        :'success' => :'success',
+        :'message' => :'message'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'name' => :'String',
-        :'related_tags' => :'Array<RelatedTagResult>'
+        :'success' => :'BOOLEAN',
+        :'message' => :'String'
       }
     end
 
@@ -44,14 +44,12 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.has_key?(:'success')
+        self.success = attributes[:'success']
       end
 
-      if attributes.has_key?(:'related_tags')
-        if (value = attributes[:'related_tags']).is_a?(Array)
-          self.related_tags = value
-        end
+      if attributes.has_key?(:'message')
+        self.message = attributes[:'message']
       end
     end
 
@@ -73,8 +71,8 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          related_tags == o.related_tags
+          success == o.success &&
+          message == o.message
     end
 
     # @see the `==` method
@@ -86,7 +84,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, related_tags].hash
+      [success, message].hash
     end
 
     # Builds the object from hash
