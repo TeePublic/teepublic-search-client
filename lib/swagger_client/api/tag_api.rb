@@ -76,7 +76,7 @@ module SwaggerClient
     # This endpoint allows a user to view the canonical and duplicate status of tags from the tag deduplication workflow.
     # @param tag_name Tag name for which we pull link graph data
     # @param [Hash] opts the optional parameters
-    # @return [ComponentsschemasLinkGraphResponse]
+    # @return [LinkGraphResponse]
     def get_v1_link_graph(tag_name, opts = {})
       data, _status_code, _headers = get_v1_link_graph_with_http_info(tag_name, opts)
       data
@@ -86,7 +86,7 @@ module SwaggerClient
     # This endpoint allows a user to view the canonical and duplicate status of tags from the tag deduplication workflow.
     # @param tag_name Tag name for which we pull link graph data
     # @param [Hash] opts the optional parameters
-    # @return [Array<(ComponentsschemasLinkGraphResponse, Fixnum, Hash)>] ComponentsschemasLinkGraphResponse data, response status code and response headers
+    # @return [Array<(LinkGraphResponse, Fixnum, Hash)>] LinkGraphResponse data, response status code and response headers
     def get_v1_link_graph_with_http_info(tag_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: TagApi.get_v1_link_graph ...'
@@ -119,7 +119,7 @@ module SwaggerClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'ComponentsschemasLinkGraphResponse')
+        :return_type => 'LinkGraphResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: TagApi#get_v1_link_graph\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 
 # **get_v1_link_graph**
-> ComponentsschemasLinkGraphResponse get_v1_link_graph(tag_name)
+> LinkGraphResponse get_v1_link_graph(tag_name)
 
 Retrieves the status of tags considered for our link graph.
 
@@ -109,7 +109,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ComponentsschemasLinkGraphResponse**](ComponentsschemasLinkGraphResponse.md)
+[**LinkGraphResponse**](LinkGraphResponse.md)
 
 ### Authorization
 
