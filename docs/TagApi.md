@@ -5,10 +5,12 @@ All URIs are relative to *https://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_v1_design_tags**](TagApi.md#get_v1_design_tags) | **GET** /v1/design-tags | Gets tags for a design
+[**get_v1_link_graph**](TagApi.md#get_v1_link_graph) | **GET** /v1/link-graph | Retrieves the status of tags considered for our link graph.
 [**get_v1_related_tags**](TagApi.md#get_v1_related_tags) | **GET** /v1/related-tags | Gets related tags based on given term(s)
 [**get_v1_tag_suggestions**](TagApi.md#get_v1_tag_suggestions) | **GET** /v1/tag-suggestions | Returns a list of tag suggestions based on search prefix.
 [**get_v1_tags**](TagApi.md#get_v1_tags) | **GET** /v1/tags | Gets tags data based on name(s)
 [**post_v1_design_tags**](TagApi.md#post_v1_design_tags) | **POST** /v1/design-tags | Sets taggings for designs
+[**post_v1_link_graph**](TagApi.md#post_v1_link_graph) | **POST** /v1/link-graph | Sets the status of tags considered for our link graph.
 [**post_v1_tags**](TagApi.md#post_v1_tags) | **POST** /v1/tags | Sets tags properties
 
 
@@ -54,6 +56,60 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DesignTagsResponse**](DesignTagsResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **get_v1_link_graph**
+> LinkGraphResponse get_v1_link_graph(tag_name)
+
+Retrieves the status of tags considered for our link graph.
+
+This endpoint allows a user to view the canonical and duplicate status of tags from the tag deduplication workflow.
+
+### Example
+```ruby
+# load the gem
+require 'swagger_client'
+# setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::TagApi.new
+
+tag_name = nil # Object | Tag name for which we pull link graph data
+
+
+begin
+  #Retrieves the status of tags considered for our link graph.
+  result = api_instance.get_v1_link_graph(tag_name)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling TagApi->get_v1_link_graph: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tag_name** | [**Object**](.md)| Tag name for which we pull link graph data | 
+
+### Return type
+
+[**LinkGraphResponse**](LinkGraphResponse.md)
 
 ### Authorization
 
@@ -282,6 +338,60 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SetDesignsTagsResponse**](SetDesignsTagsResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **post_v1_link_graph**
+> SetLinkGraphResponse post_v1_link_graph(body)
+
+Sets the status of tags considered for our link graph.
+
+This endpoint allows a user to edit the canonical and duplicate status of tags from the tag deduplication workflow.
+
+### Example
+```ruby
+# load the gem
+require 'swagger_client'
+# setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::TagApi.new
+
+body = SwaggerClient::SetLinkGraphRequest.new # SetLinkGraphRequest | request body
+
+
+begin
+  #Sets the status of tags considered for our link graph.
+  result = api_instance.post_v1_link_graph(body)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling TagApi->post_v1_link_graph: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**SetLinkGraphRequest**](SetLinkGraphRequest.md)| request body | 
+
+### Return type
+
+[**SetLinkGraphResponse**](SetLinkGraphResponse.md)
 
 ### Authorization
 
