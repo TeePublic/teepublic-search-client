@@ -33,7 +33,8 @@ prefix = 'prefix_example' # String | search prefix
 
 opts = { 
   limit: 6, # Integer | Number of results to return.
-  explain: false # BOOLEAN | Whether to return explanation of results.
+  explain: false, # BOOLEAN | Whether to return explanation of results.
+  bucket: 'default' # String | AB test bucket
 }
 
 begin
@@ -52,6 +53,7 @@ Name | Type | Description  | Notes
  **prefix** | **String**| search prefix | 
  **limit** | **Integer**| Number of results to return. | [optional] [default to 6]
  **explain** | **BOOLEAN**| Whether to return explanation of results. | [optional] [default to false]
+ **bucket** | **String**| AB test bucket | [optional] [default to default]
 
 ### Return type
 
