@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ref_design_id** | **Integer** | reference design id | [optional] 
 **search_terms** | **String** | Search terms. | [optional] 
 **sort** | **String** | Sort order | [optional] [default to &#39;relevance&#39;]
 **tags_filter** | **Array&lt;String&gt;** | Design tags filter. | [optional] 
