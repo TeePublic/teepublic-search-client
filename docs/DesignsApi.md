@@ -4,15 +4,15 @@ All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**post_v1_similar_designs**](DesignsApi.md#post_v1_similar_designs) | **POST** /v1/similar-designs | Returns a list of discoverable designs based on the query of a design&#39;s primary tag.
+[**post_v1_similar_designs**](DesignsApi.md#post_v1_similar_designs) | **POST** /v1/similar-designs | Returns a list of discoverable designs based on a reference design and/or primary tag.
 
 
 # **post_v1_similar_designs**
 > SimilarDesignsResponse post_v1_similar_designs(body)
 
-Returns a list of discoverable designs based on the query of a design's primary tag.
+Returns a list of discoverable designs based on a reference design and/or primary tag.
 
-Returns a list of discoverable designs based on the query of a design's primary tag.
+Returns a list of discoverable designs based on a reference design and/or primary tag.
 
 ### Example
 ```ruby
@@ -32,7 +32,7 @@ body = SwaggerClient::SimilarDesignsRequestV1.new # SimilarDesignsRequestV1 | Si
 
 
 begin
-  #Returns a list of discoverable designs based on the query of a design's primary tag.
+  #Returns a list of discoverable designs based on a reference design and/or primary tag.
   result = api_instance.post_v1_similar_designs(body)
   p result
 rescue SwaggerClient::ApiError => e

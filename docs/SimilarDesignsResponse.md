@@ -7,5 +7,6 @@ Name | Type | Description | Notes
 **total** | **Integer** | total number of documents matching our search criteria. | [optional] 
 **explain** | [**Explain**](Explain.md) |  | [optional] 
 **designs** | [**Array&lt;DesignSlim&gt;**](DesignSlim.md) | list of designs. | [optional] 
+**x_supplemental** | **Object** | may contain experimental supplemental response information. | [optional] 
 
 
