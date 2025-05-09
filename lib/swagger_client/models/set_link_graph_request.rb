@@ -23,7 +23,7 @@ module SwaggerClient
     # If the tag is a duplicate, the canonical parent tag
     attr_accessor :canonical_parent
 
-    # Email of user who last edited the tag
+    # Email of the user submitting the request
     attr_accessor :last_editor
 
     # List of related search suggestions to override

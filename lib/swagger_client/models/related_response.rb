@@ -21,7 +21,7 @@ module SwaggerClient
     # Flag to indicate if suggestions are overrides
     attr_accessor :is_override
 
-    # Email of user who last edited the tag
+    # \"auto\" for automatically generated suggestions, email of user who last edited the suggestions otherwise 
     attr_accessor :last_editor
 
     # Attribute mapping from ruby-style variable name to JSON key.

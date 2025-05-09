@@ -63,7 +63,7 @@ module SwaggerClient
         :'status' => :'String',
         :'canonical_parent' => :'String',
         :'override' => :'BOOLEAN',
-        :'related_searches' => :'Array<RelatedResponse>'
+        :'related_searches' => :'RelatedResponse'
       }
     end
 
@@ -88,9 +88,7 @@ module SwaggerClient
       end
 
       if attributes.has_key?(:'related_searches')
-        if (value = attributes[:'related_searches']).is_a?(Array)
-          self.related_searches = value
-        end
+        self.related_searches = attributes[:'related_searches']
       end
     end
 
