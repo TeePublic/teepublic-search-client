@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **get_v1_trending_search**
-> Array&lt;TrendingResult&gt; get_v1_trending_search
+> Array&lt;TrendingResult&gt; get_v1_trending_search(opts)
 
 Gets trending search results.
 
@@ -29,9 +29,13 @@ end
 
 api_instance = SwaggerClient::TrendingApi.new
 
+opts = { 
+  region: 'CA' # String | US state code (e.g. CA). Omit for the national list.
+}
+
 begin
   #Gets trending search results.
-  result = api_instance.get_v1_trending_search
+  result = api_instance.get_v1_trending_search(opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling TrendingApi->get_v1_trending_search: #{e}"
@@ -39,7 +43,10 @@ end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **region** | **String**| US state code (e.g. CA). Omit for the national list. | [optional] 
 
 ### Return type
 

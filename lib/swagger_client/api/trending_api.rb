@@ -22,6 +22,7 @@ module SwaggerClient
     # Gets trending search results.
     # Gets trending search results.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :region US state code (e.g. CA). Omit for the national list.
     # @return [Array<TrendingResult>]
     def get_v1_trending_search(opts = {})
       data, _status_code, _headers = get_v1_trending_search_with_http_info(opts)
@@ -31,6 +32,7 @@ module SwaggerClient
     # Gets trending search results.
     # Gets trending search results.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :region US state code (e.g. CA). Omit for the national list.
     # @return [Array<(Array<TrendingResult>, Fixnum, Hash)>] Array<TrendingResult> data, response status code and response headers
     def get_v1_trending_search_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -41,6 +43,7 @@ module SwaggerClient
 
       # query parameters
       query_params = {}
+      query_params[:'region'] = opts[:'region'] if !opts[:'region'].nil?
 
       # header parameters
       header_params = {}
