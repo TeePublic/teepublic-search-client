@@ -21,7 +21,7 @@ module SwaggerClient
     # List of trending results.
     attr_accessor :results
 
-    # US state code (e.g. CA) the results are for. Omit for the national list.
+    # Region code in ISO 3166-2 format (e.g. US-CA) the results are for. Omit for the global list.
     attr_accessor :region
 
     # Attribute mapping from ruby-style variable name to JSON key.
