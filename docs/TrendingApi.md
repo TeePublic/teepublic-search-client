@@ -30,7 +30,7 @@ end
 api_instance = SwaggerClient::TrendingApi.new
 
 opts = { 
-  region: 'US-CA' # String | Region code in ISO 3166-2 format (e.g. US-CA). Omit for the global list.
+  region: 'region_example' # String | Region code in ISO 3166-2 format (e.g. US-CA). Omit for the global list.
 }
 
 begin
